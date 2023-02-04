@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -225, y: -50}
+  m_AnchoredPosition: {x: -960, y: -95}
   m_SizeDelta: {x: 419.11047, y: 55.91101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60689516
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 147
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118812331}
   m_Layer: 0
-  m_Name: Lane1_Start
+  m_Name: Lane_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118812330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.81, y: -2.68, z: 6.87}
+  m_LocalPosition: {x: -3.81, y: -2.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1331040403}
@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 216016087}
   - component: {fileID: 216016086}
   - component: {fileID: 216016085}
+  - component: {fileID: 216016089}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -280,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -324,6 +325,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 60689515}
+  - {fileID: 429521265}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,6 +334,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &216016089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216016084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9274385738f07994b8ee2db7e3b5319c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RemainingTimeText: {fileID: 60689516}
+  GameOverText: {fileID: 429521266}
 --- !u!1 &248648764
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248648765}
   m_Layer: 0
-  m_Name: Lane1_End
+  m_Name: Lane_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,12 +372,91 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248648764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.93, y: -3.78, z: 5.85}
+  m_LocalPosition: {x: 7.93, y: -3.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1463227519}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &429521264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429521265}
+  - component: {fileID: 429521267}
+  - component: {fileID: 429521266}
+  m_Layer: 5
+  m_Name: GameOverText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &429521265
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429521264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 216016088}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -960, y: -540}
+  m_SizeDelta: {x: 673.466, y: 235.648}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &429521266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429521264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 163
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Game Over
+--- !u!222 &429521267
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429521264}
+  m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768783408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.01}
+  m_LocalPosition: {x: 0, y: 0, z: 6.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 712088031}
@@ -574,7 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 778325865}
   m_Layer: 0
-  m_Name: Lane1_Start
+  m_Name: Lane_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778325864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.5, y: -4.86, z: 6.646446}
+  m_LocalPosition: {x: -8.5, y: -4.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768064093}
@@ -768,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 964135486}
   m_Layer: 0
-  m_Name: Lane1_Start
+  m_Name: Lane_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964135485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.449999, y: -3.8199997, z: 6.646446}
+  m_LocalPosition: {x: -8.449999, y: -3.8199997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1463227519}
@@ -798,7 +893,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1123030338}
   - component: {fileID: 1123030337}
-  - component: {fileID: 1123030336}
   - component: {fileID: 1123030339}
   - component: {fileID: 1123030340}
   m_Layer: 0
@@ -808,18 +902,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1123030336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123030335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9274385738f07994b8ee2db7e3b5319c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1123030337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BodyPartsController: {fileID: 1123030340}
-  GuiController: {fileID: 1123030336}
+  GuiController: {fileID: 216016089}
   SpawnerController: {fileID: 1123030339}
 --- !u!4 &1123030338
 Transform:
@@ -861,9 +943,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c5cccb4417986489d37426d3e5f0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvatarPrefab: {fileID: 6261826930826181307, guid: c4af792f0bcc35d409f8b521699bc8a2, type: 3}
+  AvatarPrefab: {fileID: 8411307976710112940, guid: c4af792f0bcc35d409f8b521699bc8a2, type: 3}
   Lanes:
+  - {fileID: 1768064094}
   - {fileID: 1463227520}
+  - {fileID: 1331040404}
+  MovePresets:
+  - {fileID: 11400000, guid: b81fda70d11098a4d8f3c698cfaaf10e, type: 2}
+  - {fileID: 11400000, guid: ea8a7d99d58fd7c40ab60aa156b30a2e, type: 2}
+  - {fileID: 11400000, guid: d0cfddce38ec7894eb4f8595847498c8, type: 2}
 --- !u!114 &1123030340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,7 +975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208914816}
   m_Layer: 0
-  m_Name: Lane1_End
+  m_Name: Lane_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,7 +989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208914815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8, y: -2.6400013, z: 6.073553}
+  m_LocalPosition: {x: 3.8, y: -2.6400013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1331040403}
@@ -998,7 +1086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331040402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1.15}
+  m_LocalPosition: {x: 0, y: 0.5, z: 6.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 118812331}
@@ -1047,7 +1135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463227518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 964135486}
@@ -1163,7 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739541212}
   m_Layer: 0
-  m_Name: Lane1_End
+  m_Name: Lane_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1177,7 +1265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739541211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.8799987, y: -4.8200006, z: 5.85}
+  m_LocalPosition: {x: 7.8799987, y: -4.8200006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768064093}
@@ -1208,7 +1296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768064092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 4.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 778325865}
@@ -1230,5 +1318,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {fileID: 778325865}
   End: {fileID: 1739541212}
-  AvatarSize: 2.85
+  AvatarSize: 2.75
   PreviewAvatarProgress: 0.206

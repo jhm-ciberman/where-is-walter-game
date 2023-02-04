@@ -13,8 +13,7 @@ public class SpawnLane : MonoBehaviour
     [Range(0, 1)]
     public float PreviewAvatarProgress = 0.5f;
 
-
-    public Vector3 GetPosition(float laneProgress)
+    public Vector3 ProgressToPosition(float laneProgress)
     {
         var position = this.Start.position;
         var direction = (this.End.position - this.Start.position).normalized;
@@ -23,7 +22,21 @@ public class SpawnLane : MonoBehaviour
         return position;
     }
 
+    public Vector3 DistanceToPosition(float distance)
+    {
+        var position = this.Start.position;
+        var direction = (this.End.position - this.Start.position).normalized;
+        position += direction * distance;
+        return position;
+    }
 
+
+    public float Distance => Vector3.Distance(this.Start.position, this.End.position);
+
+    public float ProgressToDistance(float progress)
+    {
+        return this.Distance * progress;
+    }
 
     protected void OnDrawGizmos()
     {
@@ -44,7 +57,7 @@ public class SpawnLane : MonoBehaviour
 
         // Draw preview avatar
         var radius = this.AvatarSize * 0.5f;
-        var position = this.GetPosition(this.PreviewAvatarProgress);
+        var position = this.ProgressToPosition(this.PreviewAvatarProgress);
         position.y += radius;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(position, radius);

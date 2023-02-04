@@ -1,19 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuiController : MonoBehaviour
 {
+    public Text RemainingTimeText;
+
+    public Text GameOverText;
+
     public void Start()
     {
-
+        this.GameOverText.gameObject.SetActive(false);
     }
 
     public void ShowGameOver()
     {
-        Debug.Log("Game Over");
+        this.GameOverText.gameObject.SetActive(true);
     }
 
     public void SetRemainingTime(float remainingTime)
     {
-        Debug.Log("Remaining time: " + remainingTime);
+        this.RemainingTimeText.text = remainingTime.ToString("0");
     }
 }

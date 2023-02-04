@@ -50,10 +50,16 @@ public class GameManager : MonoBehaviour
             var appearance = this.BodyPartsController.GetRandomAppearance();
             this.BodyPartsController.ExcludeAppearance(appearance);
             this._targetsToFind.Add(appearance);
+            this.SpawnerController.SpawnRandom(appearance);
         }
 
         // Debug
-        this.SpawnerController.Spawn(this._targetsToFind[0], this.SpawnerController.Lanes[0], 0.5f);
+        int extrasCount = 30;
+        for (int i = 0; i < extrasCount; i++)
+        {
+            var appearance = this.BodyPartsController.GetRandomAppearance();
+            this.SpawnerController.SpawnRandom(appearance);
+        }
     }
 
     public void Update()

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653049633601686618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.226, y: 0.384, z: 0}
+  m_LocalPosition: {x: 0.226, y: 0.384, z: -0.06}
   m_LocalScale: {x: 0.22291589, y: 0.22291589, z: 0.22291589}
   m_Children: []
   m_Father: {fileID: 6139164374287332856}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961265295007769993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.541, z: 0}
+  m_LocalPosition: {x: 0, y: 0.541, z: 0.039}
   m_LocalScale: {x: 0.22291589, y: 0.22291589, z: 0.22291589}
   m_Children: []
   m_Father: {fileID: 6139164374287332856}
@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4064819531321499132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.263, y: 0.37699997, z: 0}
+  m_LocalPosition: {x: -0.263, y: 0.37699997, z: -0.06}
   m_LocalScale: {x: 0.22291589, y: 0.22291589, z: 0.22291589}
   m_Children: []
   m_Father: {fileID: 6139164374287332856}
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5919331511350099938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.541, z: 0}
+  m_LocalPosition: {x: 0, y: 0.541, z: -0.041}
   m_LocalScale: {x: 0.22291589, y: 0.22291589, z: 0.22291589}
   m_Children: []
   m_Father: {fileID: 6139164374287332856}
@@ -316,7 +316,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 48b300a401a699f48b6cdf21d666c2c4, type: 3}
   m_Color: {r: 0.9811321, g: 0.8529648, b: 0.23602703, a: 1}
   m_FlipX: 0
@@ -337,9 +337,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6139164374287332856}
-  - component: {fileID: 6261826930826181307}
   - component: {fileID: 4762502413520679537}
   - component: {fileID: 4897061545674538651}
+  - component: {fileID: 8411307976710112940}
   m_Layer: 0
   m_Name: AvatarPrefab
   m_TagString: Untagged
@@ -367,24 +367,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6261826930826181307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6139164374287332838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580319fe60c20ea46a6fb221d51916ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BodyRenderer: {fileID: 4043904727840918091}
-  HeadRenderer: {fileID: 7689128926782886444}
-  AccessoryRenderer: {fileID: 6234962793999519741}
-  ClothesRenderer: {fileID: 4415267925087320245}
-  LeftHandRenderer: {fileID: 4697570750579915090}
-  RightHandRenderer: {fileID: 1575902275610907128}
 --- !u!58 &4762502413520679537
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -417,6 +399,50 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.72222555}
   serializedVersion: 2
   m_Radius: 0.26547658
+--- !u!114 &8411307976710112940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139164374287332838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580319fe60c20ea46a6fb221d51916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyRenderer: {fileID: 4043904727840918091}
+  FaceRenderer: {fileID: 7689128926782886444}
+  AccessoryRenderer: {fileID: 6234962793999519741}
+  ClothesRenderer: {fileID: 4415267925087320245}
+  LeftHandRenderer: {fileID: 4697570750579915090}
+  RightHandRenderer: {fileID: 1575902275610907128}
+  BounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.003905683
+      value: 0.0031847134
+      inSlope: 4.7978897
+      outSlope: 4.7978897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.036610115
+    - serializedVersion: 3
+      time: 0.95703125
+      value: 0.019107819
+      inSlope: -3.1982477
+      outSlope: -3.1982477
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.050776258
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MovePreset: {fileID: 11400000, guid: b81fda70d11098a4d8f3c698cfaaf10e, type: 2}
+  DeltaTimeScale: 1
 --- !u!1 &6665409875687314569
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,9 +513,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25ff4c2a8fc186f43a22de70780f4471, type: 3}
-  m_Color: {r: 0.8679245, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -524,7 +550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6704445973575476419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.541, z: 0}
+  m_LocalPosition: {x: 0, y: 0.541, z: -0.053}
   m_LocalScale: {x: 0.22291589, y: 0.22291589, z: 0.22291589}
   m_Children: []
   m_Father: {fileID: 6139164374287332856}
@@ -569,7 +595,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cf26c9395779d1f4298dd3fccd878ed8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
