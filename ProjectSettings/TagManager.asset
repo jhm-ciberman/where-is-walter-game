@@ -41,3 +41,54 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LaneLayer0
+    uniqueID: 4255171207
+    locked: 0
+  - name: LaneLayer1
+    uniqueID: 3272816403
+    locked: 0
+  - name: LaneLayer2
+    uniqueID: 1617296669
+    locked: 0
+  - name: LaneLayer3
+    uniqueID: 632742941
+    locked: 0
+  - name: LaneLayer4
+    uniqueID: 71660001
+    locked: 0
+  - name: LaneLayer5
+    uniqueID: 549871877
+    locked: 0
+  - name: LaneLayer6
+    uniqueID: 2977794249
+    locked: 0
+  - name: LaneLayer7
+    uniqueID: 1665571091
+    locked: 0
+  - name: LaneLayer8
+    uniqueID: 3721431081
+    locked: 0
+  - name: LaneLayer9
+    uniqueID: 1600370583
+    locked: 0
+  - name: LaneLayer10
+    uniqueID: 1797835397
+    locked: 0
+  - name: LaneLayer11
+    uniqueID: 1876143921
+    locked: 0
+  - name: LaneLayer12
+    uniqueID: 281686553
+    locked: 0
+  - name: LaneLayer13
+    uniqueID: 1990000041
+    locked: 0
+  - name: LaneLayer14
+    uniqueID: 1073152301
+    locked: 0
+  - name: LaneLayer15
+    uniqueID: 2426072683
+    locked: 0
+  - name: LaneLayer16
+    uniqueID: 2177373627
+    locked: 0

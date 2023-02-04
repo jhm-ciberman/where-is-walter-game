@@ -28,12 +28,15 @@ public class SpawnerController : MonoBehaviour
         position += direction * distance * laneProgress;
         position.z = 0;
         var avatar = Instantiate(this.AvatarPrefab, position, Quaternion.identity, lane.transform);
+        this._avatars.Add(avatar);
         avatar.Appearance = appearance;
         avatar.transform.position = position;
         avatar.transform.localScale = Vector3.one * lane.AvatarSize;
         avatar.SetLane(lane, laneProgress);
         avatar.MovePreset = movePreset;
         avatar.InitializeRandom(this._random);
+        avatar.SetSortingLayer(lane.GetSortingLayerID());
+        avatar.SetSortingOrder(this._avatars.Count);
     }
 
     public void SpawnRandom(AvatarAppearance appearance)

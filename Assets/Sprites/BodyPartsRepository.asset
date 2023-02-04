@@ -32,10 +32,10 @@ MonoBehaviour:
     Probability: 1
   - Sprite: {fileID: 21300000, guid: ccfd9c67afd114a498dbf4525e2fa6c2, type: 3}
     Probability: 1
-  - Sprite: {fileID: 21300000, guid: ccfd9c67afd114a498dbf4525e2fa6c2, type: 3}
-    Probability: 1
   - Sprite: {fileID: 21300000, guid: 865fc928e1450944191719545c2aac5e, type: 3}
     Probability: 1
   Accessories:
   - Sprite: {fileID: 21300000, guid: 94516137ec5178349872f5b55a6087c5, type: 3}
+    Probability: 0.227
+  - Sprite: {fileID: 21300000, guid: 48b300a401a699f48b6cdf21d666c2c4, type: 3}
     Probability: 1

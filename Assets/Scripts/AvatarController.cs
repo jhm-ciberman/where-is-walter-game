@@ -48,6 +48,21 @@ public class AvatarController : MonoBehaviour
 
     public float DeltaTimeScale = 1.0f;
 
+    private SpriteRenderer[] _renderers;
+
+    public void Awake()
+    {
+        this._renderers = new SpriteRenderer[]
+        {
+            this.BodyRenderer,
+            this.FaceRenderer,
+            this.AccessoryRenderer,
+            this.ClothesRenderer,
+            this.LeftHandRenderer,
+            this.RightHandRenderer,
+        };
+    }
+
     public void InitializeRandom(System.Random random)
     {
         this._bounceTime = (float)random.NextDouble();
@@ -130,5 +145,21 @@ public class AvatarController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(this.transform.position + Vector3.up * 0.5f, 0.5f);
+    }
+
+    public void SetSortingLayer(int sortingLayerID)
+    {
+        foreach (var renderer in this._renderers)
+        {
+            renderer.sortingLayerID = sortingLayerID;
+        }
+    }
+
+    public void SetSortingOrder(int order)
+    {
+        foreach (var renderer in this._renderers)
+        {
+            renderer.sortingOrder = order;
+        }
     }
 }
