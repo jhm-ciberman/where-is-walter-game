@@ -1,0 +1,87 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{cs,vb}]
+
+dotnet_sort_system_directives_first = true
+csharp_new_line_before_open_brace = all
+csharp_space_around_declaration_statements = ignore
+csharp_prefer_braces = when_multiline
+csharp_prefer_simple_default_expression = false
+csharp_style_implicit_object_creation_when_type_is_apparent = false
+csharp_style_namespace_declarations = file_scoped:error
+
+dotnet_diagnostic.IDE0040.severity = warning # access modifier required
+dotnet_diagnostic.IDE0008.severity = none # Use explicit type instead of 'var'
+dotnet_diagnostic.IDE0007.severity = none # Use 'var' instead of explicit type
+dotnet_diagnostic.IDE0055.severity = suggestion # Fix Formating
+dotnet_diagnostic.IDE0130.severity = warning # "Namespace 'Foo' does not match folder structure (https://github.com/dotnet/roslyn/issues/55014 is solved now so we can use this!)
+dotnet_diagnostic.IDE0036.severity = suggestion # "Modifiers are not ordered" (static public instead of public static)
+dotnet_diagnostic.IDE0048.severity = none # Parenthesis must be added for clarity (I know math, I'm an engineer, I don't need extra parenthesis)
+dotnet_diagnostic.CA1816.severity = silent # Call GC.SuppressFinalize correctly (TODO: implement this correctly)
+dotnet_diagnostic.CA1001.severity = warning # Types that own disposable fields should be disposable
+
+dotnet_style_require_accessibility_modifiers = always
+dotnet_style_object_initializer = false
+dotnet_style_qualification_for_field = true
+dotnet_style_qualification_for_property = true
+dotnet_style_qualification_for_method = true
+dotnet_style_qualification_for_event = true
+csharp_style_prefer_index_operator = false
+
+# private_fields
+dotnet_naming_symbols.private_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private, protected
+# members_and_fields
+dotnet_naming_symbols.element_group.applicable_kinds           = namespace, class, enum, struct, delegate, event, method, property
+
+# static_readonly
+dotnet_naming_symbols.static_readonly.applicable_kinds           = property, field
+dotnet_naming_symbols.static_readonly.applicable_accessibilities = public
+dotnet_naming_symbols.static_readonly.required_modifiers         = static, readonly
+# const
+dotnet_naming_symbols.const.applicable_kinds           = property, field
+dotnet_naming_symbols.const.applicable_accessibilities = *
+dotnet_naming_symbols.const.required_modifiers         = const
+
+# prefix_underscore
+dotnet_naming_style.prefix_underscore.capitalization = camel_case
+dotnet_naming_style.prefix_underscore.required_prefix = _
+# pascal_case
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+# uppercase
+dotnet_naming_style.uppercase.capitalization = all_upper
+dotnet_naming_style.uppercase.word_separator = _
+
+# private int _fooBar = 5;
+dotnet_naming_rule.private_members_with_underscore.symbols  = private_fields
+dotnet_naming_rule.private_members_with_underscore.style    = prefix_underscore
+dotnet_naming_rule.private_members_with_underscore.severity = suggestion
+
+# public int FooBar { get; set; } = 5;
+dotnet_naming_rule.pascal_case.symbols  = element_group
+dotnet_naming_rule.pascal_case.style    = pascal_case
+dotnet_naming_rule.pascal_case.severity = suggestion
+
+# public static readonly FOO_BAR = 5;
+dotnet_naming_rule.static_readonly_with_uppercase.symbols  = static_readonly
+dotnet_naming_rule.static_readonly_with_uppercase.style    = uppercase
+dotnet_naming_rule.static_readonly_with_uppercase.severity = suggestion
+
+# public const FOO_BAR = 5;
+dotnet_naming_rule.const_with_uppercase.symbols  = const
+dotnet_naming_rule.const_with_uppercase.style    = uppercase
+dotnet_naming_rule.const_with_uppercase.severity = suggestion
+
+
