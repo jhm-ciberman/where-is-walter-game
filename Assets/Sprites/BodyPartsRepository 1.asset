@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7d630db408ef24a82d20a41f5c4941, type: 3}
+  m_Name: BodyPartsRepository 1
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPartsRepository
+  Bodies:
+  - Sprite: {fileID: 21300000, guid: 2d61a9c5887930d4491402e7761f0a87, type: 3}
+    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    Probability: 1
+  Faces:
+  - Sprite: {fileID: 21300000, guid: 6ac3ebf979891784cac994a47fba5339, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 7af179ed94c01f04bad88c6a47bcf944, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 91c782e6be9e4ff489cc5836c824cce1, type: 3}
+    Probability: 1
+  Clothes:
+  - Sprite: {fileID: 21300000, guid: d268d97e4a5b3fb43919a2e6c3f8f449, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 0b7e1e125a092804db2bba094634d23c, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 743ded043094b8641abb123c641bbb9b, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: ccfd9c67afd114a498dbf4525e2fa6c2, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 865fc928e1450944191719545c2aac5e, type: 3}
+    Probability: 1
+  Accessories:
+  - Sprite: {fileID: 21300000, guid: 94516137ec5178349872f5b55a6087c5, type: 3}
+    Probability: 1

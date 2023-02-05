@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    private readonly List<AvatarController> _avatars = new List<AvatarController>();
+    private readonly List<AvatarMovementController> _avatars = new List<AvatarMovementController>();
 
-    public AvatarController AvatarPrefab;
+    public AvatarMovementController AvatarPrefab;
 
     public List<SpawnLane> Lanes;
 
@@ -29,14 +29,17 @@ public class SpawnerController : MonoBehaviour
         position.z = 0;
         var avatar = Instantiate(this.AvatarPrefab, position, Quaternion.identity, lane.transform);
         this._avatars.Add(avatar);
-        avatar.Appearance = appearance;
+
         avatar.transform.position = position;
         avatar.transform.localScale = Vector3.one * lane.AvatarSize;
         avatar.SetLane(lane, laneProgress);
         avatar.MovePreset = movePreset;
         avatar.InitializeRandom(this._random);
-        avatar.SetSortingLayer(lane.GetSortingLayerID());
-        avatar.SetSortingOrder(this._avatars.Count);
+
+        var apController = avatar.AppearanceController;
+        apController.Appearance = appearance;
+        apController.SetSortingLayer(lane.GetSortingLayerID());
+        apController.SetSortingOrder(this._avatars.Count);
     }
 
     public void SpawnRandom(AvatarAppearance appearance)

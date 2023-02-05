@@ -1,34 +1,15 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarController : MonoBehaviour
+public class AvatarMovementController : MonoBehaviour
 {
-    private AvatarAppearance _appearance;
+    //public enum State
+    //{
+    //    Walking,
+    //    Waiting,
+    //    Stoped,
+    //}
 
-    public SpriteRenderer BodyRenderer;
-
-    public SpriteRenderer FaceRenderer;
-
-    public SpriteRenderer AccessoryRenderer;
-
-    public SpriteRenderer ClothesRenderer;
-
-    public SpriteRenderer LeftHandRenderer;
-
-    public SpriteRenderer RightHandRenderer;
-
-    public AvatarAppearance Appearance
-    {
-        get => this._appearance;
-        set
-        {
-            if (this._appearance == value)
-                return;
-            this._appearance = value;
-            this.UpdateAppearance();
-        }
-    }
+    public AvatarAppearanceController AppearanceController;
 
     private SpawnLane _lane;
 
@@ -38,30 +19,19 @@ public class AvatarController : MonoBehaviour
 
     public float CurrentDistance { get; private set; }
 
-    public AnimationCurve BounceCurve;
-
     public MovePreset MovePreset;
 
     private float _bounceTime;
 
     private float _swingTime;
 
-    public float DeltaTimeScale = 1.0f;
+    public float DeltaTimeScale = 0.5f;
 
-    private SpriteRenderer[] _renderers;
+    public AvatarAppearance Appearance => this.AppearanceController.Appearance;
 
-    public void Awake()
-    {
-        this._renderers = new SpriteRenderer[]
-        {
-            this.BodyRenderer,
-            this.FaceRenderer,
-            this.AccessoryRenderer,
-            this.ClothesRenderer,
-            this.LeftHandRenderer,
-            this.RightHandRenderer,
-        };
-    }
+    //public State CurrentState { get; private set; } = State.Walking;
+
+
 
     public void InitializeRandom(System.Random random)
     {
@@ -112,7 +82,7 @@ public class AvatarController : MonoBehaviour
 
         // Adjust position
         var basePosition = lane.DistanceToPosition(distance);
-        float y = this.BounceCurve.Evaluate(this._bounceTime);
+        float y = this.LerpBounce(this._bounceTime);
         var deltaY = y * move.BounceHeight * lane.AvatarSize;
         this.transform.position = basePosition + Vector3.up * deltaY;
 
@@ -131,35 +101,14 @@ public class AvatarController : MonoBehaviour
 
     }
 
-    private void UpdateAppearance()
+    // a simple curve that bounces 1 time (half a sine wave)
+    private float LerpBounce(float t)
     {
-        this.BodyRenderer.sprite = this.Appearance.Body.Sprite;
-        this.FaceRenderer.sprite = this.Appearance.Face.Sprite;
-        this.AccessoryRenderer.sprite = this.Appearance.Accessory.Sprite;
-        this.ClothesRenderer.sprite = this.Appearance.Clothes.Sprite;
-        this.LeftHandRenderer.sprite = this.Appearance.Body.HandSprite;
-        this.RightHandRenderer.sprite = this.Appearance.Body.HandSprite;
+        return Mathf.Abs(Mathf.Sin(t * Mathf.PI * 2));
     }
 
-    protected void OnDrawGizmos()
+    public void OnMouseDown()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(this.transform.position + Vector3.up * 0.5f, 0.5f);
-    }
-
-    public void SetSortingLayer(int sortingLayerID)
-    {
-        foreach (var renderer in this._renderers)
-        {
-            renderer.sortingLayerID = sortingLayerID;
-        }
-    }
-
-    public void SetSortingOrder(int order)
-    {
-        foreach (var renderer in this._renderers)
-        {
-            renderer.sortingOrder = order;
-        }
+        GameManager.Instance.OnClickAvatar(this);
     }
 }

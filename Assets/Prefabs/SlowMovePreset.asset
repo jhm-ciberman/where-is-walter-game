@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SlowMovePreset
   m_EditorClassIdentifier: 
   Speed: 0.26
-  BounceHeight: 0.06
-  BounceSpeed: 0.77
+  BounceHeight: 0.25
+  BounceSpeed: 1.89
   SwingAngle: 6.43
