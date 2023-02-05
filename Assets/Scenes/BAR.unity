@@ -684,9 +684,9 @@ MonoBehaviour:
   GuiController: {fileID: 216016089}
   SpawnerController: {fileID: 1123030339}
   GlobalAvatarTimeScale: 0.35
-  NumberOfTargetsToFind: 1
+  NumberOfTargetsToFind: 3
   NumberOfExtras: 21
-  MaxNumberOfAttempts: 3
+  MaxNumberOfAttempts: 38
   NextSceneName: MenuArbol
 --- !u!4 &1123030338
 Transform:

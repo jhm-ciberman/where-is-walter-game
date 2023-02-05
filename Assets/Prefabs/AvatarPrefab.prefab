@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,7 +220,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -304,7 +304,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -395,6 +395,8 @@ MonoBehaviour:
   ClothesRenderer: {fileID: 4415267925087320245}
   LeftHandRenderer: {fileID: 4697570750579915090}
   RightHandRenderer: {fileID: 1575902275610907128}
+  HighlightMaterial: {fileID: 2100000, guid: 8203f1270ae4c5e46b8979a9ed7ca5da, type: 2}
+  DefaultMaterial: {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
 --- !u!114 &1372865841357968055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppearanceController: {fileID: 6285906091049989526}
   MovePreset: {fileID: 11400000, guid: ea8a7d99d58fd7c40ab60aa156b30a2e, type: 2}
-  DeltaTimeScale: 7.57
+  RocketAcceleration: 50
 --- !u!58 &-5056956419835487850
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -494,7 +496,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -578,7 +580,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eedc15d0e35a57440b40c1bb57e7971a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

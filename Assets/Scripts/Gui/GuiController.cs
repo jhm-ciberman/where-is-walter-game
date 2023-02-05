@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GuiController : MonoBehaviour
 {
     public TextMeshProUGUI RemainingTimeText;
 
     public TextMeshProUGUI GameOverText;
+
+    public TextMeshProUGUI WinText;
 
     public TextMeshProUGUI AttemptsText;
 
@@ -17,11 +20,14 @@ public class GuiController : MonoBehaviour
     public void Start()
     {
         this.GameOverText.gameObject.SetActive(false);
+        this.WinText.gameObject.SetActive(false);
     }
 
     public void ShowGameOver()
     {
         this.GameOverText.gameObject.SetActive(true);
+
+        this.AnimateSlidingUp(this.GameOverText.transform);
     }
 
     public void SetRemainingTime(float remainingTime)
@@ -31,7 +37,21 @@ public class GuiController : MonoBehaviour
 
     internal void ShowGameWon()
     {
-        Debug.Log("Game won");
+        this.WinText.gameObject.SetActive(true);
+
+        this.AnimateSlidingUp(this.WinText.transform);
+    }
+
+    private void AnimateSlidingUp(Transform transform)
+    {
+        Vector3 position = transform.localPosition;
+        transform.localPosition -= Vector3.up * 1000;
+        DOTween.To(
+            () => transform.localPosition,
+            x => transform.localPosition = x,
+            position,
+            0.5f
+        ).SetEase(Ease.OutBack);
     }
 
 

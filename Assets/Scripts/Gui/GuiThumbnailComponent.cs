@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,6 +51,14 @@ public class GuiThumbnailComponent : MonoBehaviour
         this.AvatarController.SetColor(Color.gray);
         this.CrossRenderer.gameObject.SetActive(true);
         this.SwingController.IsStatic = true;
+
+        this.CrossRenderer.transform.localScale = Vector3.zero;
+        DOTween.To(
+            () => this.CrossRenderer.transform.localScale,
+            x => this.CrossRenderer.transform.localScale = x,
+            Vector3.one,
+            0.5f
+        ).SetEase(Ease.OutBack);
     }
 
     private void InstantiateTargetObject(GameObject targetObject)

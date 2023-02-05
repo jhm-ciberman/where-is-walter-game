@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -29,6 +30,15 @@ public class GameManager : MonoBehaviour
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
     private int _attempts = 0;
+
+    private enum GameState
+    {
+        Playing,
+        GameOver,
+        GameWon,
+    }
+
+    private GameState _gameState = GameState.Playing;
 
     public void Start()
     {
@@ -79,24 +89,26 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        this.RemainingTime -= Time.deltaTime;
-
-        if (this.RemainingTime <= 0)
+        if (this._gameState == GameState.Playing)
         {
-            this.RemainingTime = 0;
-        }
-        this.GuiController.SetRemainingTime(this.RemainingTime);
 
+            this.RemainingTime -= Time.deltaTime;
 
-        if (this.RemainingTime <= 0)
-        {
-            this.RemainingTime = 0;
-            this.GuiController.ShowGameOver();
-            Debug.Log("Game Over");
+            if (this.RemainingTime <= 0)
+            {
+                this.RemainingTime = 0;
+            }
+            this.GuiController.SetRemainingTime(this.RemainingTime);
+
+            if (this.RemainingTime <= 0)
+            {
+                this.LooseLevel();
+            }
         }
+
     }
 
-    internal void OnClickAvatar(AvatarMovementController avatarController)
+    public bool OnClickAvatar(AvatarMovementController avatarController)
     {
         if (this._targetsToFind.Contains(avatarController.Appearance))
         {
@@ -104,21 +116,45 @@ public class GameManager : MonoBehaviour
             this.GuiController.MarkTargetAvatarAsFound(avatarController.Appearance);
             if (this._targetsToFind.Count == 0)
             {
-                this.GuiController.ShowGameWon();
-
-                // Load next scene
-                UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
+                this.WinLevel();
             }
+
+            return true;
         }
-        else
+        else if (this._attempts < this.MaxNumberOfAttempts)
         {
             this._attempts++;
+
             this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
             if (this._attempts >= this.MaxNumberOfAttempts)
             {
-                this.GuiController.ShowGameOver();
-                Debug.Log("Game Over");
+                this.LooseLevel();
             }
         }
+
+        return false;
+    }
+
+    private void WinLevel()
+    {
+        this._gameState = GameState.GameWon;
+        this.GuiController.ShowGameWon();
+        // Load next scene
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
+        });
+    }
+
+    private void LooseLevel()
+    {
+        this._gameState = GameState.GameOver;
+        this.GuiController.ShowGameOver();
+
+        // Load next scene
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
+        });
     }
 }

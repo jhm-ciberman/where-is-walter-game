@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class AvatarAppearanceController : MonoBehaviour
@@ -15,6 +17,10 @@ public class AvatarAppearanceController : MonoBehaviour
     public SpriteRenderer LeftHandRenderer;
 
     public SpriteRenderer RightHandRenderer;
+
+    public Material HighlightMaterial;
+
+    public Material DefaultMaterial;
 
     public AvatarAppearance Appearance
     {
@@ -73,6 +79,36 @@ public class AvatarAppearanceController : MonoBehaviour
         foreach (var renderer in this._renderers)
         {
             renderer.sortingOrder = order;
+        }
+    }
+
+    public void SetTint(Color color)
+    {
+        foreach (var renderer in this._renderers)
+        {
+            renderer.color = color;
+        }
+    }
+
+    public Color GetTintColor()
+    {
+        return this.BodyRenderer.color;
+    }
+
+    internal Tween TintToColor(Color color, float duration = 0.5f)
+    {
+        return DOTween.To(
+            () => this.GetTintColor(),
+            x => this.SetTint(x),
+            color,
+            duration);
+    }
+
+    internal void SetHighlight(bool isHighlighted)
+    {
+        foreach (var renderer in this._renderers)
+        {
+            renderer.material = isHighlighted ? this.HighlightMaterial : this.DefaultMaterial;
         }
     }
 }
