@@ -33,7 +33,7 @@ public class GuiController : MonoBehaviour
     }
 
 
-    internal void MarkTargetAsFound(AvatarAppearance appearance)
+    internal void MarkTargetAvatarAsFound(AvatarAppearance appearance)
     {
         foreach (var thumbnail in this.TargetsThumbnails)
         {
@@ -44,12 +44,38 @@ public class GuiController : MonoBehaviour
         }
     }
 
-    public void SetTargets(IEnumerable<AvatarAppearance> targets)
+    public void MarkTargetObjectAsFound(GameObject targetObject)
+    {
+        foreach (var thumbnail in this.TargetsThumbnails)
+        {
+            if (thumbnail.TargetObjectGameObject == targetObject)
+            {
+                thumbnail.MarkAsFound();
+            }
+        }
+    }
+
+    public void SetTargetAvatars(IEnumerable<AvatarAppearance> targets)
     {
         var i = 0;
         foreach (var target in targets)
         {
             this.TargetsThumbnails[i].Appearance = target;
+            i++;
+        }
+
+        for (; i < this.TargetsThumbnails.Length; i++)
+        {
+            this.TargetsThumbnails[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void SetTargetObjects(IEnumerable<GameObject> targets)
+    {
+        var i = 0;
+        foreach (var target in targets)
+        {
+            this.TargetsThumbnails[i].TargetObjectGameObject = target;
             i++;
         }
 

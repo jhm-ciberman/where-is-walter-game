@@ -28,6 +28,27 @@ public class GuiThumbnailComponent : MonoBehaviour
 
     public GuiAvatar AvatarController;
 
+    public RectTransform TargetObjectParentTransform;
+
+
+    private GameObject _targetObjectGameObject;
+    public GameObject TargetObjectGameObject
+    {
+        get => this._targetObjectGameObject;
+        set
+        {
+            var old = this._targetObjectGameObject;
+            if (old == value) return;
+
+            DeinstantiateTargetObject(old);
+            this._targetObjectGameObject = value;
+            bool showAvatar = value == null;
+            this.AvatarTransform.gameObject.SetActive(showAvatar);
+            InstantiateTargetObject(value);
+        }
+    }
+
+
     public AvatarAppearance Appearance
     {
         get => this.AvatarController.Appearance;
@@ -59,5 +80,23 @@ public class GuiThumbnailComponent : MonoBehaviour
         this._bounceTime += Time.deltaTime * this.BounceSpeed;
         this.AvatarTransform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(this._swingTime) * this.SwingAngle);
         this.AvatarTransform.localPosition = this._initialAvatarPosition + new Vector3(0f, Mathf.Sin(this._bounceTime) * this.BounceDelta, 0f);
+    }
+
+    private void InstantiateTargetObject(GameObject targetObject)
+    {
+        if (targetObject == null)
+            return;
+
+        var go = Instantiate(targetObject, this.TargetObjectParentTransform);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localScale = Vector3.one;
+    }
+
+    private void DeinstantiateTargetObject(GameObject targetObject)
+    {
+        if (targetObject == null)
+            return;
+
+        Destroy(targetObject);
     }
 }

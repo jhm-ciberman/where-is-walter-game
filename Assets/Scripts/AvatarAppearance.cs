@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[System.Serializable]
 public class AvatarAppearance : IEquatable<AvatarAppearance>
 {
     public BodyPreset Body { get; private set; }

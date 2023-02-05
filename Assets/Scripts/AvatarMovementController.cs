@@ -25,8 +25,6 @@ public class AvatarMovementController : MonoBehaviour
 
     private float _swingTime;
 
-    public float DeltaTimeScale = 0.5f;
-
     public AvatarAppearance Appearance => this.AppearanceController.Appearance;
 
     //public State CurrentState { get; private set; } = State.Walking;
@@ -73,7 +71,7 @@ public class AvatarMovementController : MonoBehaviour
 
         this.CurrentDistance = distance;
 
-        float dt = Time.deltaTime * this.DeltaTimeScale;
+        float dt = Time.deltaTime * GameManager.Instance.GlobalAvatarTimeScale;
 
         // Adjust scale
         var scale = this.transform.localScale;

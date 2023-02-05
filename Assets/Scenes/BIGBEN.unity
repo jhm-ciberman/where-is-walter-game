@@ -901,7 +901,7 @@ MonoBehaviour:
   BodyPartsController: {fileID: 1713521991}
   GuiController: {fileID: 2117647510}
   SpawnerController: {fileID: 1713521992}
-  NumberOfTargetsToFind: 3
+  NumberOfTargetsToFind: 2
   NumberOfExtras: 25
 --- !u!4 &1713521994
 Transform:

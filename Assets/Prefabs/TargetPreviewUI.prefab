@@ -600,6 +600,7 @@ MonoBehaviour:
   BounceDelta: 5.24
   CrossRenderer: {fileID: 5607189931083811253}
   AvatarController: {fileID: 20025606240975014}
+  TargetObjectParentTransform: {fileID: 8527347748727574479}
 --- !u!1 &7075106889118749006
 GameObject:
   m_ObjectHideFlags: 0

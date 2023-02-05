@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public float RemainingTime { get; private set; }
 
+    public float GlobalAvatarTimeScale = 0.35f;
+
     public int NumberOfTargetsToFind = 1;
 
     public int NumberOfExtras = 2;
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            throw new System.Exception("There can only be one GameManager");
+            GameObject.Destroy(this.gameObject);
         }
 
         Instance = this;
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
             this.SpawnerController.SpawnRandom(appearance);
         }
 
-        this.GuiController.SetTargets(this._targetsToFind);
+        this.GuiController.SetTargetAvatars(this._targetsToFind);
 
         // Debug
         for (int i = 0; i < this.NumberOfExtras; i++)
@@ -90,7 +92,7 @@ public class GameManager : MonoBehaviour
         if (this._targetsToFind.Contains(avatarController.Appearance))
         {
             this._targetsToFind.Remove(avatarController.Appearance);
-            this.GuiController.MarkTargetAsFound(avatarController.Appearance);
+            this.GuiController.MarkTargetAvatarAsFound(avatarController.Appearance);
             if (this._targetsToFind.Count == 0)
             {
                 this.GuiController.ShowGameWon();
