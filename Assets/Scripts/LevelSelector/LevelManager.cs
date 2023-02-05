@@ -20,6 +20,10 @@ public class LevelManager : MonoBehaviour
 
     private readonly List<LevelInfo> _recentlyUnlockedLevels = new List<LevelInfo>();
 
+    public LevelInfo CurrentLevel { get; private set; } = null;
+
+    public int UnlockedLevelsCount => this._unlockedLevels.Count;
+
     public void Awake()
     {
         if (Instance != null)
@@ -55,6 +59,7 @@ public class LevelManager : MonoBehaviour
         if (this.IsLevelUnlocked(levelName))
         {
             var level = this.GetLevelInfo(levelName);
+            this.CurrentLevel = level;
             SceneManager.LoadScene(level.SceneName);
         }
     }
@@ -95,5 +100,16 @@ public class LevelManager : MonoBehaviour
     public void ResetRecentlyUnlockedLevels()
     {
         this._recentlyUnlockedLevels.Clear();
+    }
+
+    public void NotifyLevelCompleted(string levelName = null)
+    {
+        levelName ??= this.CurrentLevel.SceneName;
+
+        var level = this.GetLevelInfo(levelName);
+        foreach (var nextLevel in level.UnlocksLevels)
+        {
+            this.UnlockLevel(nextLevel.ToString().ToUpperInvariant());
+        }
     }
 }

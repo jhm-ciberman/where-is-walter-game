@@ -38,6 +38,11 @@ public class GuiLevelSelectionButton : MonoBehaviour
         LevelManager.Instance.OnLevelUnlocked += this.OnLevelUnlocked;
     }
 
+    public void OnDestroy()
+    {
+        LevelManager.Instance.OnLevelUnlocked -= this.OnLevelUnlocked;
+    }
+
     private void OnLevelUnlocked(LevelInfo level)
     {
         if (level.Level == this.Level)

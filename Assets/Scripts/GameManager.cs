@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,6 +105,16 @@ public class GameManager : MonoBehaviour
             {
                 this.LooseLevel();
             }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                this.WinLevel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                this.LooseLevel();
+            }
         }
 
     }
@@ -137,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void WinLevel()
     {
+        LevelManager.Instance.NotifyLevelCompleted();
         this._gameState = GameState.GameWon;
         this.GuiController.ShowGameWon();
         // Load next scene

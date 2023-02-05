@@ -163,11 +163,13 @@ public class AvatarMovementController : MonoBehaviour
             // Tint interpolate color to red and back
             var sequence = DOTween.Sequence();
             var red = new Color(0.8f, 0.2f, 0.2f);
+            this.AppearanceController.SetTint(red);
             for (int i = 0; i < 5; i++)
             {
-                sequence.Append(this.AppearanceController.TintToColor(red, 0.2f));
                 sequence.Append(this.AppearanceController.TintToColor(Color.white, 0.2f));
+                sequence.Append(this.AppearanceController.TintToColor(red, 0.2f));
             }
+            sequence.Append(this.AppearanceController.TintToColor(Color.white, 0.2f));
             sequence.OnComplete(() => this.StartWalking());
         }
     }
