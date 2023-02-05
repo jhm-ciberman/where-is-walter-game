@@ -4,21 +4,7 @@ using UnityEngine.UI;
 
 public class GuiThumbnailComponent : MonoBehaviour
 {
-    private AvatarAppearance _appearance;
 
-    public Image BodyRenderer;
-
-    public Image FaceRenderer;
-
-    public Image AccessoryRenderer;
-
-    public Image ClothesRenderer;
-
-    public Image LeftHandRenderer;
-
-    public Image RightHandRenderer;
-
-    public Image CrossRenderer;
 
     public RectTransform AvatarTransform;
 
@@ -26,36 +12,26 @@ public class GuiThumbnailComponent : MonoBehaviour
 
     public float SwingAngle = 5f;
 
+    public float BounceSpeed = 0.2f;
+
+    public float BounceDelta = 0.1f;
+
     private float _swingTime = 0f;
 
-    private bool _isSwinging = true;
+    private float _bounceTime = 0f;
+
+    private bool _isStatic = false;
+
+    private Vector3 _initialAvatarPosition;
+
+    public Image CrossRenderer;
+
+    public GuiAvatar AvatarController;
 
     public AvatarAppearance Appearance
     {
-        get => this._appearance;
-        set
-        {
-            if (this._appearance == value)
-                return;
-            this._appearance = value;
-            this.UpdateAppearance();
-        }
-    }
-
-
-    private Image[] _renderers;
-
-    public void Awake()
-    {
-        this._renderers = new Image[]
-        {
-            this.BodyRenderer,
-            this.FaceRenderer,
-            this.AccessoryRenderer,
-            this.ClothesRenderer,
-            this.LeftHandRenderer,
-            this.RightHandRenderer,
-        };
+        get => this.AvatarController.Appearance;
+        set => this.AvatarController.Appearance = value;
     }
 
     public void Start()
@@ -63,34 +39,25 @@ public class GuiThumbnailComponent : MonoBehaviour
         this.CrossRenderer.gameObject.SetActive(false);
         this._swingTime = UnityEngine.Random.Range(0f, 100f);
         this.SwingSpeed += UnityEngine.Random.Range(-0.1f, 0.1f);
+        this._initialAvatarPosition = this.AvatarTransform.localPosition;
     }
 
-    private void UpdateAppearance()
-    {
-        this.BodyRenderer.sprite = this.Appearance.Body.Sprite;
-        this.FaceRenderer.sprite = this.Appearance.Face.Sprite;
-        this.AccessoryRenderer.sprite = this.Appearance.Accessory.Sprite;
-        this.ClothesRenderer.sprite = this.Appearance.Clothes.Sprite;
-        this.LeftHandRenderer.sprite = this.Appearance.Body.HandSprite;
-        this.RightHandRenderer.sprite = this.Appearance.Body.HandSprite;
-    }
+
 
     internal void MarkAsFound()
     {
-        foreach (var renderer in this._renderers)
-        {
-            renderer.color = Color.gray;
-        }
-
+        this.AvatarController.SetColor(Color.gray);
         this.CrossRenderer.gameObject.SetActive(true);
-        this._isSwinging = false;
+        this._isStatic = true;
     }
 
     public void Update()
     {
-        if (!this._isSwinging)
+        if (this._isStatic)
             return;
         this._swingTime += Time.deltaTime * this.SwingSpeed;
+        this._bounceTime += Time.deltaTime * this.BounceSpeed;
         this.AvatarTransform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(this._swingTime) * this.SwingAngle);
+        this.AvatarTransform.localPosition = this._initialAvatarPosition + new Vector3(0f, Mathf.Sin(this._bounceTime) * this.BounceDelta, 0f);
     }
 }
