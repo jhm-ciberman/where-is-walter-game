@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 332343616}
   - component: {fileID: 332343618}
   m_Layer: 5
-  m_Name: W1
+  m_Name: Walter_callado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -752,10 +752,18 @@ MonoBehaviour:
   - "Al fin! Pens\xE9 que SE HAB\xCDAN OLVIDADO DE M\xCD."
   - ...
   - "no puedo irme hasta completar mi tarea. \xBFpuedes ayudarme?"
+  - "\xA1 Se que tienes demasiada flojera como para hacer servicio a la comunidad
+    !"
+  - "tarde! ya est\xE1s aqu\xED, adem\xE1s \xBFtienes algo m\xE1s importante que
+    hacer?"
+  - ...
+  - "\xA1Tal como pensaba! empecemos."
   W1: {fileID: 332343614}
   W2: {fileID: 1235346872}
   W3: {fileID: 1875563100}
   W4: {fileID: 861556308}
+  MENUinteractivo: {fileID: 1315548494}
+  Textos_dialogos: {fileID: 392380609}
 --- !u!222 &392380613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1267,7 +1275,7 @@ GameObject:
   - component: {fileID: 861556311}
   - component: {fileID: 861556310}
   m_Layer: 5
-  m_Name: W4
+  m_Name: Walter_risa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1564,7 @@ GameObject:
   - component: {fileID: 1235346875}
   - component: {fileID: 1235346874}
   m_Layer: 5
-  m_Name: W2
+  m_Name: Walter_sonrie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1315548495
 Transform:
   m_ObjectHideFlags: 0
@@ -1736,7 +1744,7 @@ GameObject:
   - component: {fileID: 1875563103}
   - component: {fileID: 1875563102}
   m_Layer: 5
-  m_Name: W3
+  m_Name: Walter_hablando
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

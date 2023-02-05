@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Typewritter : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Typewritter : MonoBehaviour
     public string[] messages;
     private int currentMessage = 0;
 
-    public GameObject W1,W2,W3,W4;
+    public GameObject W1,W2,W3,W4,MENUinteractivo,Textos_dialogos;
 
     void Start()
     {
@@ -53,6 +54,30 @@ public class Typewritter : MonoBehaviour
             W2.SetActive(false);
             W3.SetActive(false);
             W4.SetActive(true);
+        }
+        else if(currentMessage == 5)
+        {
+            W1.SetActive(false);
+            W2.SetActive(false);
+            W3.SetActive(false);
+            W4.SetActive(true);
+        }else if(currentMessage == 6)
+        {
+            W1.SetActive(true);
+            W2.SetActive(false);
+            W3.SetActive(false);
+            W4.SetActive(false);
+        }
+        else if(currentMessage == 7)
+        {
+            W1.SetActive(false);
+            W2.SetActive(false);
+            W3.SetActive(true);
+            W4.SetActive(false);
+        }
+        else if(currentMessage == 8)
+        {
+            SceneManager.LoadScene("");
         }
     }
 
