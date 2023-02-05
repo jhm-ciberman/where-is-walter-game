@@ -25,9 +25,6 @@ MonoBehaviour:
   - Sprite: {fileID: 21300000, guid: fcd00edf0a7673d4eb340213c4f40a64, type: 3}
     HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
     Probability: 1
-  - Sprite: {fileID: 21300000, guid: 6e2d8c7ff7607e44cbab32c002154e49, type: 3}
-    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
-    Probability: 1
   Faces:
   - Sprite: {fileID: 21300000, guid: e00c7ffa245818541ba38025b20d4812, type: 3}
     Probability: 1
