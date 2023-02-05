@@ -616,7 +616,7 @@ MonoBehaviour:
   CrossRenderer: {fileID: 5607189931083811253}
   AvatarController: {fileID: 20025606240975014}
   TargetObjectParentTransform: {fileID: 8527347748727574479}
-  SwingController: {fileID: 0}
+  SwingController: {fileID: 3094144360832277479}
 --- !u!1 &7075106889118749006
 GameObject:
   m_ObjectHideFlags: 0
