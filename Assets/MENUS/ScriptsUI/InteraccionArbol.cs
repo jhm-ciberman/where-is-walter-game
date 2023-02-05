@@ -13,52 +13,48 @@ public class InteraccionArbol : MonoBehaviour
     public bool Intro = true;
     public GameObject Dialogue;
 
-    void Start()
+    public void Start()
     {
         text.text = "";
-        StartCoroutine(Type());
-    }
 
-    void Update()
-    {
-        if (LevelManager.Instance.UnlockedLevelsCount > 0)
+        if (LevelManager.Instance.UnlockedLevelsCount <= 1)
         {
-            Intro = false;
+            StartCoroutine(Type());
         }
 
+    }
+
+    public void Update()
+    {
         if (currentMessage == 3)
         {
             TreesMenuShadow.SetActive(true);
-            
-        }
-       else if(currentMessage >= 4)
-       {
-            SceneManager.LoadScene("CUARTO");
-       }
 
-        if(Intro == false)
+        }
+        else if (currentMessage >= 4)
+        {
+            LevelManager.Instance.StartLevel("CUARTO");
+        }
+
+        if (Intro == false)
         {
             Dialogue.SetActive(false);
         }
-
     }
 
-    IEnumerator Type()
+    private IEnumerator Type()
     {
         while (true)
         {
-            if (Intro == true)
+            string message = messages[currentMessage];
+            foreach (char letter in message.ToCharArray())
             {
-                string message = messages[currentMessage];
-                foreach (char letter in message.ToCharArray())
-                {
-                    text.text += letter;
-                    yield return new WaitForSeconds(delay);
-                }
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0));
-                text.text = "";
-                currentMessage = (currentMessage + 1) % messages.Length;
+                text.text += letter;
+                yield return new WaitForSeconds(delay);
             }
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0));
+            text.text = "";
+            currentMessage = (currentMessage + 1) % messages.Length;
         }
     }
 }

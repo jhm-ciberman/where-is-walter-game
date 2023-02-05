@@ -911,7 +911,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &456923782
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -928,7 +928,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &754799790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,7 +1679,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1381568170
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1696,7 +1696,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1381568171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,6 +1793,8 @@ MonoBehaviour:
   - ...
   currentMessage: 0
   TreesMenuShadow: {fileID: 456923778}
+  Intro: 1
+  Dialogue: {fileID: 0}
 --- !u!114 &1451474546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,12 +2467,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - Level: 2
-    UnlocksLevels: 03000000
-  - Level: 3
+  - Level: 1
     UnlocksLevels: 04000000
   - Level: 4
-    UnlocksLevels: 
+    UnlocksLevels: 03000000
+  - Level: 3
+    UnlocksLevels: 02000000
+  - Level: 2
+    UnlocksLevels: 00000000
   LevelSelectionSceneName: MenuArbol
 --- !u!4 &1938552214
 Transform:

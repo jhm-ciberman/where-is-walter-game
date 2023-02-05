@@ -38,6 +38,8 @@ public class LevelManager : MonoBehaviour
         {
             this._levelsByName.Add(levelInfo.SceneName, levelInfo);
         }
+
+        this.UnlockLevel(this.Levels[0].SceneName);
     }
 
     public void Update()
