@@ -18,6 +18,18 @@ public class GuiThumbnailComponent : MonoBehaviour
 
     public Image RightHandRenderer;
 
+    public Image CrossRenderer;
+
+    public RectTransform AvatarTransform;
+
+    public float SwingSpeed = 0.2f;
+
+    public float SwingAngle = 5f;
+
+    private float _swingTime = 0f;
+
+    private bool _isSwinging = true;
+
     public AvatarAppearance Appearance
     {
         get => this._appearance;
@@ -46,6 +58,13 @@ public class GuiThumbnailComponent : MonoBehaviour
         };
     }
 
+    public void Start()
+    {
+        this.CrossRenderer.gameObject.SetActive(false);
+        this._swingTime = UnityEngine.Random.Range(0f, 100f);
+        this.SwingSpeed += UnityEngine.Random.Range(-0.1f, 0.1f);
+    }
+
     private void UpdateAppearance()
     {
         this.BodyRenderer.sprite = this.Appearance.Body.Sprite;
@@ -62,5 +81,16 @@ public class GuiThumbnailComponent : MonoBehaviour
         {
             renderer.color = Color.gray;
         }
+
+        this.CrossRenderer.gameObject.SetActive(true);
+        this._isSwinging = false;
+    }
+
+    public void Update()
+    {
+        if (!this._isSwinging)
+            return;
+        this._swingTime += Time.deltaTime * this.SwingSpeed;
+        this.AvatarTransform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(this._swingTime) * this.SwingAngle);
     }
 }

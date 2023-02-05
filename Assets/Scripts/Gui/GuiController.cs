@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GuiController : MonoBehaviour
 {
-    public Text RemainingTimeText;
+    public TextMeshProUGUI RemainingTimeText;
 
-    public Text GameOverText;
+    public TextMeshProUGUI GameOverText;
 
     public GuiThumbnailComponent[] TargetsThumbnails;
 
