@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 2eb369c7d856c45478f559761b41323b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Classic Comic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 741bd0d5077fb5448a7d1bbda728a26b, type: 3}
+  - {fileID: 12800000, guid: a198896be4997904f8344dc2a0527726, type: 3}
+  - {fileID: 12800000, guid: eac49ceff8797fc4ea015ee1367ae743, type: 3}
+  - {fileID: 12800000, guid: c4a5bbba505a18c49871c951814c565c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
