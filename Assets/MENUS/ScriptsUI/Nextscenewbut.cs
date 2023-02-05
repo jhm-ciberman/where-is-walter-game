@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Nextscenewbut : MonoBehaviour
 {
 
-    void NextScene()
+    public void NextScene()
     {
         SceneManager.LoadScene("SampleScene");
     }
