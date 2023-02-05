@@ -20,21 +20,21 @@ public class Typewritter : MonoBehaviour
 
     void Update()
     {
-        if(currentMessage == 0)
+        if (currentMessage == 0)
         {
             W1.SetActive(false);
             W2.SetActive(false);
             W3.SetActive(false);
             W4.SetActive(false);
         }
-        else if(currentMessage == 1)
+        else if (currentMessage == 1)
         {
             W1.SetActive(true);
             W2.SetActive(false);
             W3.SetActive(false);
             W4.SetActive(false);
         }
-        else if(currentMessage == 2)
+        else if (currentMessage == 2)
         {
             W1.SetActive(false);
             W2.SetActive(true);
@@ -55,27 +55,28 @@ public class Typewritter : MonoBehaviour
             W3.SetActive(false);
             W4.SetActive(true);
         }
-        else if(currentMessage == 5)
+        else if (currentMessage == 5)
         {
             W1.SetActive(false);
             W2.SetActive(false);
             W3.SetActive(false);
             W4.SetActive(true);
-        }else if(currentMessage == 6)
+        }
+        else if (currentMessage == 6)
         {
             W1.SetActive(true);
             W2.SetActive(false);
             W3.SetActive(false);
             W4.SetActive(false);
         }
-        else if(currentMessage == 7)
-        {
-            W1.SetActive(false);
-            W2.SetActive(false);
-            W3.SetActive(true);
-            W4.SetActive(false);
-        }
-        else if(currentMessage == 8)
+        //else if(currentMessage == 7)
+        //{
+        //    W1.SetActive(false);
+        //    W2.SetActive(false);
+        //    W3.SetActive(true);
+        //    W4.SetActive(false);
+        //}
+        else
         {
             SceneManager.LoadScene(SiguienteEscena);
         }

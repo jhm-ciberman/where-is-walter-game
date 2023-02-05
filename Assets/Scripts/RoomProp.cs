@@ -4,26 +4,15 @@ using UnityEngine;
 
 public enum PropType
 {
-    USB, PHONE,
+    USB, PHONE, SPEAKER, WALLET, DISK, MUG
 }
 
 public class RoomProp : MonoBehaviour
 {
     public PropType propType;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnMouseDown()
     {
-        GMRoom.instance.propfound(this.propType);
+        GMRoom.Instance.Propfound(this.propType);
     }
 }

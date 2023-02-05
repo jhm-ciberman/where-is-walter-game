@@ -155,7 +155,12 @@ MonoBehaviour:
   USB: {fileID: 7466842184520858687, guid: f690eea671a15f04abdbed933b62f6fa, type: 3}
   PHONE: {fileID: 5647110160833926138, guid: 06e2376874d1c3046a878ca32b0df082, type: 3}
   NombreObjeto: 
-  guicontroller: {fileID: 910601576}
+  GuiController: {fileID: 910601576}
+  Encontrados: 0
+  IsPlaying: 1
+  RemainingTime: 0
+  TotalTime: 60
+  Attempts: 4
 --- !u!4 &118137078
 Transform:
   m_ObjectHideFlags: 0
@@ -163,13 +168,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118137076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 925.2405, y: 392.7332, z: 3.1551912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 925.2405, y: 392.7332, z: 3.1551914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &220054657
 GameObject:
@@ -282,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762914228510345923, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5762914228510345923, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -457,7 +462,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &608502432
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -474,7 +479,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &910601576 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5762914228510345922, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
@@ -604,7 +609,7 @@ Transform:
   - {fileID: 269271763}
   - {fileID: 240252758}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451010266
 GameObject:
@@ -672,7 +677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794506948
 GameObject:
@@ -757,7 +762,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1794506952
 MonoBehaviour:
@@ -782,7 +787,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1864215143
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -799,7 +804,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3556061255199351346
 PrefabInstance:
   m_ObjectHideFlags: 0

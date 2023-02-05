@@ -6,97 +6,97 @@ using DG.Tweening;
 
 public class GMRoom : MonoBehaviour
 {
-    public static GMRoom instance;
+    public static GMRoom Instance;
     public GameObject USB, PHONE;
     public string NombreObjeto;
-    public GuiController guicontroller;
+    public GuiController GuiController;
     public int Encontrados = 0;
-    public bool isPlaying = true;
-    public float remainingTime;
-    public float TotalTime;
+    public bool IsPlaying = true;
+    public float RemainingTime;
+    public float TotalTime = 60f;
     public int Attempts = 4;
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        instance = this;
-        guicontroller.SetTargetObjects(new GameObject[]
+        Instance = this;
+        GuiController.SetTargetObjects(new GameObject[]
         {
             USB, PHONE
         });
 
-        remainingTime = TotalTime;
+        RemainingTime = TotalTime;
 
-        guicontroller.SetRemainingAttempts(Attempts);
+        GuiController.SetRemainingAttempts(Attempts);
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-       
-        if(Encontrados == 2 && isPlaying = true)
+        if (this.Encontrados == 2 && IsPlaying)
         {
             WinLevel();
         }
 
-        remainingTime -= Time.deltaTime;
-        if(remainingTime < 0)
+        RemainingTime -= Time.deltaTime;
+
+        if (RemainingTime < 0)
         {
-            remainingTime = 0;
+            RemainingTime = 0;
             LooseLevel();
         }
 
-        guicontroller.SetRemainingTime(remainingTime);
+        GuiController.SetRemainingTime(RemainingTime);
 
     }
 
     private void WinLevel()
     {
-        isPlaying = false;
+        IsPlaying = false;
         LevelManager.Instance.NotifyLevelCompleted();
         this.GuiController.ShowGameWon();
         // Load next scene
         DOVirtual.DelayedCall(3f, () =>
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MenuArbol");
+            SceneManager.LoadScene("MenuArbol");
         });
     }
 
     private void LooseLevel()
     {
-        isPlaying = false;
-        this._gameState = GameState.GameOver;
+        IsPlaying = false;
         this.GuiController.ShowGameOver();
 
         // Load next scene
         DOVirtual.DelayedCall(3f, () =>
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MenuArbol");
+            SceneManager.LoadScene("MenuArbol");
         });
     }
 
-    public void propfound(PropType propType)
+    public void Propfound(PropType propType)
     {
-        if(propType == PropType.USB)
+        if (propType == PropType.USB)
         {
-            guicontroller.MarkTargetObjectAsFound(this.USB);
-            Encontrados = Encontrados + 1;
+            GuiController.MarkTargetObjectAsFound(this.USB);
+            Encontrados++;
         }
-        else if(propType == propType.PHONE)
+        else if (propType == PropType.PHONE)
         {
-            guicontroller.MarkTargetObjectAsFound(this.PHONE);
-            Encontrados = Encontrados + 1;
+            GuiController.MarkTargetObjectAsFound(this.PHONE);
+            Encontrados++;
         }
         else
         {
             Attempts--;
-            guicontroller.SetRemainingTime(remainingTime);
+            GuiController.SetRemainingTime(RemainingTime);
 
-            if(Attempts == 0)
+            if (Attempts == 0)
             {
                 LooseLevel();
             }
         }
     }
 
-    
+
 }
