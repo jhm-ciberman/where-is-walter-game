@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BAR.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BIGBEN.unity
+    guid: fe89eed20fbe88e418d84b5c1582c473
+  - enabled: 1
+    path: Assets/Scenes/CUARTO.unity
+    guid: 15311ec22fc1a5e42bcc562b8679c8ec
+  - enabled: 1
+    path: Assets/Scenes/Dialogo1.unity
+    guid: 6c1833d4ab8430043b208ea1bd1edef1
+  - enabled: 1
+    path: Assets/Scenes/DISCO.unity
+    guid: fd22ba30bde9ef94e9c4d26f7e29a6f0
+  - enabled: 1
+    path: Assets/Scenes/MenuArbol.unity
+    guid: 7179a2a1c54ab7c4a94a344d83a61caf
   m_configObjects: {}

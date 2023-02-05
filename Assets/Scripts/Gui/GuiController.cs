@@ -10,6 +10,8 @@ public class GuiController : MonoBehaviour
 
     public TextMeshProUGUI GameOverText;
 
+    public TextMeshProUGUI AttemptsText;
+
     public GuiThumbnailComponent[] TargetsThumbnails;
 
     public void Start()
@@ -24,7 +26,7 @@ public class GuiController : MonoBehaviour
 
     public void SetRemainingTime(float remainingTime)
     {
-        this.RemainingTimeText.text = remainingTime.ToString("0");
+        this.RemainingTimeText.text = remainingTime.ToString("00");
     }
 
     internal void ShowGameWon()
@@ -83,5 +85,10 @@ public class GuiController : MonoBehaviour
         {
             this.TargetsThumbnails[i].gameObject.SetActive(false);
         }
+    }
+
+    internal void SetRemainingAttempts(int attempts)
+    {
+        this.AttemptsText.text = attempts.ToString("00");
     }
 }

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class Nextscenewbut : MonoBehaviour
 {
 
+    public string NextSceneName = "MenuArbol";
+
     public void NextScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(this.NextSceneName);
     }
 }

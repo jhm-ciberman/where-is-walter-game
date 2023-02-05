@@ -22,7 +22,13 @@ public class GameManager : MonoBehaviour
 
     public int NumberOfExtras = 2;
 
+    public int MaxNumberOfAttempts = 3;
+
+    public string NextSceneName = "MenuArbol";
+
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
+
+    private int _attempts = 0;
 
     public void Start()
     {
@@ -66,6 +72,9 @@ public class GameManager : MonoBehaviour
             var appearance = this.BodyPartsController.GetRandomAppearance();
             this.SpawnerController.SpawnRandom(appearance);
         }
+
+        this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts);
+        this.GuiController.SetRemainingTime(this.RemainingTime);
     }
 
     public void Update()
@@ -96,6 +105,19 @@ public class GameManager : MonoBehaviour
             if (this._targetsToFind.Count == 0)
             {
                 this.GuiController.ShowGameWon();
+
+                // Load next scene
+                UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
+            }
+        }
+        else
+        {
+            this._attempts++;
+            this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
+            if (this._attempts >= this.MaxNumberOfAttempts)
+            {
+                this.GuiController.ShowGameOver();
+                Debug.Log("Game Over");
             }
         }
     }

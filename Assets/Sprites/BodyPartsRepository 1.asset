@@ -14,16 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BodyPartsRepository
   Bodies:
   - Sprite: {fileID: 21300000, guid: 08bc7b56505d2594ca8a8078368c581e, type: 3}
-    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    HandSprite: {fileID: 21300000, guid: c25fde53a06e8fd4aa7b31be529673a6, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 2d61a9c5887930d4491402e7761f0a87, type: 3}
-    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    HandSprite: {fileID: 21300000, guid: 21b168677ee39cd42ba8ad3029347f25, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 32af2c3c6f42fca48a8bb7e44365696a, type: 3}
-    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    HandSprite: {fileID: 21300000, guid: ad6618386acda0e4f8229e237b916731, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: fcd00edf0a7673d4eb340213c4f40a64, type: 3}
-    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    HandSprite: {fileID: 21300000, guid: 78dd44984baa35742a6d4a4ff855d85c, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 34e3f95f315973944b120e5f3426861d, type: 3}
+    HandSprite: {fileID: 21300000, guid: 1831b4fefd8cd9048a138bdee6c5444e, type: 3}
     Probability: 1
   Faces:
   - Sprite: {fileID: 21300000, guid: e00c7ffa245818541ba38025b20d4812, type: 3}

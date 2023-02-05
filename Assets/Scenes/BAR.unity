@@ -683,8 +683,11 @@ MonoBehaviour:
   BodyPartsController: {fileID: 1123030340}
   GuiController: {fileID: 216016089}
   SpawnerController: {fileID: 1123030339}
+  GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 1
   NumberOfExtras: 21
+  MaxNumberOfAttempts: 3
+  NextSceneName: MenuArbol
 --- !u!4 &1123030338
 Transform:
   m_ObjectHideFlags: 0
@@ -1109,10 +1112,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3825673852463086344, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
-      propertyPath: m_Name
-      value: TargetPreviewUI_1
-      objectReference: {fileID: 0}
     - target: {fileID: 5762914228510345923, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1201,11 +1200,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5762914228510345935, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2234073103232173365, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
-    - {fileID: 5762914228589126263, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
