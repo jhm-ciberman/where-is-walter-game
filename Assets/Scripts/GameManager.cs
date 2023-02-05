@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
 
     public float RemainingTime { get; private set; }
 
-    public int NumberOfTargetsToFind { get; set; } = 1;
+    public int NumberOfTargetsToFind = 1;
 
-    public int NumberOfExtras { get; set; } = 2;
+    public int NumberOfExtras = 2;
 
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
