@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float RemainingTime { get; private set; }
 
     public int NumberOfTargetsToFind { get; set; } = 1;
+
+    public int NumberOfExtras { get; set; } = 2;
 
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
@@ -53,9 +56,10 @@ public class GameManager : MonoBehaviour
             this.SpawnerController.SpawnRandom(appearance);
         }
 
+        this.GuiController.SetTargets(this._targetsToFind);
+
         // Debug
-        int extrasCount = 30;
-        for (int i = 0; i < extrasCount; i++)
+        for (int i = 0; i < this.NumberOfExtras; i++)
         {
             var appearance = this.BodyPartsController.GetRandomAppearance();
             this.SpawnerController.SpawnRandom(appearance);
@@ -78,6 +82,19 @@ public class GameManager : MonoBehaviour
             this.RemainingTime = 0;
             this.GuiController.ShowGameOver();
             Debug.Log("Game Over");
+        }
+    }
+
+    internal void OnClickAvatar(AvatarMovementController avatarController)
+    {
+        if (this._targetsToFind.Contains(avatarController.Appearance))
+        {
+            this._targetsToFind.Remove(avatarController.Appearance);
+            this.GuiController.MarkTargetAsFound(avatarController.Appearance);
+            if (this._targetsToFind.Count == 0)
+            {
+                this.GuiController.ShowGameWon();
+            }
         }
     }
 }

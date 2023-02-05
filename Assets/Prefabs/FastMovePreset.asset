@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6d32b24fdaf584388781e372d9ad35, type: 3}
   m_Name: FastMovePreset
   m_EditorClassIdentifier: 
-  Speed: 0.65
+  Speed: 3.85
   BounceHeight: 0.11
   BounceSpeed: 2.37
   SwingAngle: 8

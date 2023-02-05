@@ -24,12 +24,14 @@ public class BodyPartsController : MonoBehaviour
         this._random = new System.Random();
     }
 
-    public void Start()
+    public void Awake()
     {
         if (this.Repository == null)
         {
             throw new Exception("Repository is not set");
         }
+
+        this.Repository.Validate();
 
         foreach (var body in this.Repository.Bodies)
         {
