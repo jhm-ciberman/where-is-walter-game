@@ -9,8 +9,8 @@ public class Typewritter : MonoBehaviour
     public float delay = 0.1f;
     public string[] messages;
     private int currentMessage = 0;
-
     public GameObject W1,W2,W3,W4,MENUinteractivo,Textos_dialogos;
+    public string SiguienteEscena;
 
     void Start()
     {
@@ -77,7 +77,7 @@ public class Typewritter : MonoBehaviour
         }
         else if(currentMessage == 8)
         {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene(SiguienteEscena);
         }
     }
 

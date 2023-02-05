@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 392380611}
-  delay: 0.1
+  delay: 0.04
   messages:
   - "\xBF Hola ? \xBFH\xE1y alguien ah\xED ?"
   - "Al fin! Pens\xE9 que SE HAB\xCDAN OLVIDADO DE M\xCD."
@@ -764,6 +764,7 @@ MonoBehaviour:
   W4: {fileID: 861556308}
   MENUinteractivo: {fileID: 1315548494}
   Textos_dialogos: {fileID: 392380609}
+  SiguienteEscena: 
 --- !u!222 &392380613
 CanvasRenderer:
   m_ObjectHideFlags: 0
