@@ -15,6 +15,12 @@ public class CameraController : MonoBehaviour
 
     private Vector2 _microWiggleTime = Vector2.zero;
 
+    private enum FocusState
+    {
+        None = 0,
+
+    }
+
 
     public void Update()
     {

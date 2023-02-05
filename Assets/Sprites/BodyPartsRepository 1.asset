@@ -13,11 +13,33 @@ MonoBehaviour:
   m_Name: BodyPartsRepository 1
   m_EditorClassIdentifier: Assembly-CSharp::BodyPartsRepository
   Bodies:
+  - Sprite: {fileID: 21300000, guid: 08bc7b56505d2594ca8a8078368c581e, type: 3}
+    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 2d61a9c5887930d4491402e7761f0a87, type: 3}
     HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: 32af2c3c6f42fca48a8bb7e44365696a, type: 3}
+    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: fcd00edf0a7673d4eb340213c4f40a64, type: 3}
+    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 6e2d8c7ff7607e44cbab32c002154e49, type: 3}
+    HandSprite: {fileID: 21300000, guid: 11d4dd6319540484dac1144976b90248, type: 3}
+    Probability: 1
   Faces:
+  - Sprite: {fileID: 21300000, guid: e00c7ffa245818541ba38025b20d4812, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 745e7bbf65edd0440be0a15ff212e631, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 6ac3ebf979891784cac994a47fba5339, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 4b3f54a2c788416468b50d839c8940a1, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 10ae6955c6a6cee4e922ef2216e24e9e, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 6fddbd89132eaa44599a7331c102abab, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 7af179ed94c01f04bad88c6a47bcf944, type: 3}
     Probability: 1
@@ -28,12 +50,26 @@ MonoBehaviour:
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 0b7e1e125a092804db2bba094634d23c, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: 2ca25a34e82d53d43b5bf6f51a87205e, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 743ded043094b8641abb123c641bbb9b, type: 3}
     Probability: 1
-  - Sprite: {fileID: 21300000, guid: ccfd9c67afd114a498dbf4525e2fa6c2, type: 3}
+  - Sprite: {fileID: 21300000, guid: 991398d54a1c13c43847641071afa91f, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: ef74a2e12325e0a4688dd4c9e637a1c3, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 865fc928e1450944191719545c2aac5e, type: 3}
     Probability: 1
   Accessories:
+  - Sprite: {fileID: 21300000, guid: 5d164891915e54245a4d9be061fa83b2, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 5dc2f5c239ccf3a4a92722e5364afa2d, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: e9d072d090678d74bbddc7de0f2d04b8, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 9ea199d829210a042ad9f50d893c1166, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 9ce754225add32f469d0ee46a2204eae, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 94516137ec5178349872f5b55a6087c5, type: 3}
     Probability: 1
