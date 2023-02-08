@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GuiLevelSelectionButton : MonoBehaviour
@@ -63,6 +64,6 @@ public class GuiLevelSelectionButton : MonoBehaviour
         {
             return;
         }
-        LevelManager.Instance.StartLevel(this.LevelName);
+        SceneManager.LoadScene(this.LevelName);
     }
 }

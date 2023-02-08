@@ -10,17 +10,19 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance { get; private set; }
 
-    public List<LevelInfo> Levels;
+    private readonly List<LevelInfo> _levels = new List<LevelInfo>()
+    {
+        new LevelInfo(GameLevel.Cuarto).Unlocks(GameLevel.Disco),
+        new LevelInfo(GameLevel.Disco).Unlocks(GameLevel.BigBen),
+        new LevelInfo(GameLevel.BigBen).Unlocks(GameLevel.Bar),
+        new LevelInfo(GameLevel.Bar),
+    };
 
     private readonly Dictionary<string, LevelInfo> _levelsByName = new Dictionary<string, LevelInfo>();
-
-    public string LevelSelectionSceneName = "MenuArbol";
 
     private readonly List<LevelInfo> _unlockedLevels = new List<LevelInfo>();
 
     private readonly List<LevelInfo> _recentlyUnlockedLevels = new List<LevelInfo>();
-
-    public LevelInfo CurrentLevel { get; private set; } = null;
 
     public int UnlockedLevelsCount => this._unlockedLevels.Count;
 
@@ -32,14 +34,15 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
+
         DontDestroyOnLoad(this.gameObject);
 
-        foreach (var levelInfo in this.Levels)
+        foreach (var levelInfo in this._levels)
         {
             this._levelsByName.Add(levelInfo.SceneName, levelInfo);
         }
 
-        this.UnlockLevel(this.Levels[0].SceneName);
+        this.UnlockLevel(this._levels[0].SceneName);
     }
 
     public void Update()
@@ -47,22 +50,12 @@ public class LevelManager : MonoBehaviour
         // Debug
         if (Input.GetKeyDown(KeyCode.U))
         {
-            LevelInfo lockedLevel = this.Levels.Where(l => !this._unlockedLevels.Contains(l)).FirstOrDefault();
+            LevelInfo lockedLevel = this._levels.Where(l => !this._unlockedLevels.Contains(l)).FirstOrDefault();
 
             if (lockedLevel != null)
             {
                 this.UnlockLevel(lockedLevel.SceneName);
             }
-        }
-    }
-
-    public void StartLevel(string levelName)
-    {
-        if (this.IsLevelUnlocked(levelName))
-        {
-            var level = this.GetLevelInfo(levelName);
-            this.CurrentLevel = level;
-            SceneManager.LoadScene(level.SceneName);
         }
     }
 
@@ -106,11 +99,12 @@ public class LevelManager : MonoBehaviour
 
     public void NotifyLevelCompleted(string levelName = null)
     {
-        levelName ??= this.CurrentLevel.SceneName;
+        levelName ??= SceneManager.GetActiveScene().name;
 
         var level = this.GetLevelInfo(levelName);
         foreach (var nextLevel in level.UnlocksLevels)
         {
+            Debug.Log("Unlocking level: " + nextLevel.ToString().ToUpperInvariant());
             this.UnlockLevel(nextLevel.ToString().ToUpperInvariant());
         }
     }
