@@ -66,7 +66,7 @@ public class GuiController : MonoBehaviour
         }
     }
 
-    public void MarkTargetObjectAsFound(GameObject targetObject)
+    public void MarkTargetObjectAsFound(RectTransform targetObject)
     {
         foreach (var thumbnail in this.TargetsThumbnails)
         {
@@ -92,7 +92,7 @@ public class GuiController : MonoBehaviour
         }
     }
 
-    public void SetTargetObjects(IEnumerable<GameObject> targets)
+    public void SetTargetObjects(IEnumerable<RectTransform> targets)
     {
         var i = 0;
         foreach (var target in targets)

@@ -27,17 +27,17 @@ RectTransform:
   m_GameObject: {fileID: 5669783340474505196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2951770114702016217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -18}
+  m_AnchoredPosition: {x: 0.0000019073486, y: -119}
   m_SizeDelta: {x: 244.2721, y: 255.135}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.18}
 --- !u!222 &5246938405571045790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -86,8 +86,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2951770114702016217}
   - component: {fileID: 4614842329790088321}
+  - component: {fileID: 633214348941952299}
   m_Layer: 5
-  m_Name: USB_UI
+  m_Name: UsbTargetUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,3 +123,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466842184520858687}
   m_CullTransparentMesh: 1
+--- !u!114 &633214348941952299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466842184520858687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284098422d8b22a489835d62010d3cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AvatarTransform: {fileID: 1574332148196697184}
+  SwingSpeed: 1
+  SwingAngle: 3.18
+  BounceSpeed: 2.31
+  BounceDelta: 5.24
+  IsStatic: 0

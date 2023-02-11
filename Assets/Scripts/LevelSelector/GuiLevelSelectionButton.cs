@@ -18,14 +18,6 @@ public class GuiLevelSelectionButton : MonoBehaviour
 
     public Color UnlockedColor = new Color(1f, 1f, 1f, 1f);
 
-    public string LevelName
-    {
-        get
-        {
-            return this.Level.ToString().ToUpperInvariant();
-        }
-    }
-
     public void Start()
     {
         if (this.Level == GameLevel.Undefined)
@@ -33,7 +25,7 @@ public class GuiLevelSelectionButton : MonoBehaviour
             throw new System.Exception($"LevelName is not set in {this.name}");
         }
 
-        bool isUnlocked = LevelManager.Instance.IsLevelUnlocked(this.LevelName);
+        bool isUnlocked = LevelManager.Instance.IsLevelUnlocked(this.Level);
         this.SetUnlocked(isUnlocked);
 
         LevelManager.Instance.OnLevelUnlocked += this.OnLevelUnlocked;
@@ -44,9 +36,9 @@ public class GuiLevelSelectionButton : MonoBehaviour
         LevelManager.Instance.OnLevelUnlocked -= this.OnLevelUnlocked;
     }
 
-    private void OnLevelUnlocked(LevelInfo level)
+    private void OnLevelUnlocked(GameLevel level)
     {
-        if (level.Level == this.Level)
+        if (level == this.Level)
         {
             this.SetUnlocked(true);
         }
@@ -60,10 +52,10 @@ public class GuiLevelSelectionButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (!LevelManager.Instance.IsLevelUnlocked(this.LevelName))
+        if (!LevelManager.Instance.IsLevelUnlocked(this.Level))
         {
             return;
         }
-        SceneManager.LoadScene(this.LevelName);
+        SceneManager.LoadScene(this.Level.ToString().ToUpperInvariant());
     }
 }

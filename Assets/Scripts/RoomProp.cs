@@ -4,7 +4,12 @@ using UnityEngine;
 
 public enum PropType
 {
-    USB, PHONE, SPEAKER, WALLET, DISK, MUG
+    USB,
+    PHONE,
+    SPEAKER,
+    WALLET,
+    DISK,
+    MUG
 }
 
 public class RoomProp : MonoBehaviour
@@ -13,6 +18,6 @@ public class RoomProp : MonoBehaviour
 
     public void OnMouseDown()
     {
-        GMRoom.Instance.Propfound(this.propType);
+        RoomGameManager.Instance.Propfound(this.propType);
     }
 }

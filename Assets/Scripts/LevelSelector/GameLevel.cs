@@ -2,7 +2,8 @@ public enum GameLevel
 {
     Undefined = 0,
     Cuarto,
-    Bar,
-    BigBen,
     Disco,
+    BigBen,
+    Bar,
+    Ending, // Not a real level, just a scene to show the ending
 }

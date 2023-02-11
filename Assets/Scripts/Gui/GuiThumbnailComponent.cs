@@ -17,8 +17,8 @@ public class GuiThumbnailComponent : MonoBehaviour
     public GuiSwingController SwingController;
 
 
-    private GameObject _targetObjectGameObject;
-    public GameObject TargetObjectGameObject
+    private RectTransform _targetObjectGameObject;
+    public RectTransform TargetObjectGameObject
     {
         get => this._targetObjectGameObject;
         set
@@ -61,7 +61,7 @@ public class GuiThumbnailComponent : MonoBehaviour
         ).SetEase(Ease.OutBack);
     }
 
-    private void InstantiateTargetObject(GameObject targetObject)
+    private void InstantiateTargetObject(RectTransform targetObject)
     {
         if (targetObject == null)
             return;
@@ -71,7 +71,7 @@ public class GuiThumbnailComponent : MonoBehaviour
         go.transform.localScale = Vector3.one;
     }
 
-    private void DeinstantiateTargetObject(GameObject targetObject)
+    private void DeinstantiateTargetObject(RectTransform targetObject)
     {
         if (targetObject == null)
             return;

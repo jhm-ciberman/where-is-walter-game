@@ -4,108 +4,87 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager
 {
-    public event Action<LevelInfo> OnLevelUnlocked;
+    public event Action<GameLevel> OnLevelUnlocked;
 
-    public static LevelManager Instance { get; private set; }
+    private static LevelManager _instance;
 
-    private readonly List<LevelInfo> _levels = new List<LevelInfo>()
+    public static LevelManager Instance => _instance ??= new LevelManager();
+
+    private readonly List<GameLevel> _levels = new List<GameLevel>()
     {
-        new LevelInfo(GameLevel.Cuarto).Unlocks(GameLevel.Disco),
-        new LevelInfo(GameLevel.Disco).Unlocks(GameLevel.BigBen),
-        new LevelInfo(GameLevel.BigBen).Unlocks(GameLevel.Bar),
-        new LevelInfo(GameLevel.Bar),
+        GameLevel.Cuarto,
+        GameLevel.Disco,
+        GameLevel.BigBen,
+        GameLevel.Bar,
     };
 
-    private readonly Dictionary<string, LevelInfo> _levelsByName = new Dictionary<string, LevelInfo>();
-
-    private readonly List<LevelInfo> _unlockedLevels = new List<LevelInfo>();
-
-    private readonly List<LevelInfo> _recentlyUnlockedLevels = new List<LevelInfo>();
-
-    public int UnlockedLevelsCount => this._unlockedLevels.Count;
-
-    public void Awake()
+    public LevelManager()
     {
-        if (Instance != null)
-        {
-            GameObject.Destroy(this.gameObject);
-        }
-
-        Instance = this;
-
-        DontDestroyOnLoad(this.gameObject);
-
-        foreach (var levelInfo in this._levels)
-        {
-            this._levelsByName.Add(levelInfo.SceneName, levelInfo);
-        }
-
-        this.UnlockLevel(this._levels[0].SceneName);
+        this.UnlockLevel(this._levels.First());
     }
 
-    public void Update()
+    public void UnlockLevel(GameLevel level)
     {
-        // Debug
-        if (Input.GetKeyDown(KeyCode.U))
+        if (!this.IsLevelUnlocked(level))
         {
-            LevelInfo lockedLevel = this._levels.Where(l => !this._unlockedLevels.Contains(l)).FirstOrDefault();
+            PlayerPrefs.SetInt(level.ToString() + "_unlocked", 1);
+            PlayerPrefs.Save();
 
-            if (lockedLevel != null)
+            Debug.Log($"Level {level} unlocked");
+            this.OnLevelUnlocked?.Invoke(level);
+        }
+
+    }
+
+    public bool IsLevelUnlocked(GameLevel level)
+    {
+        return PlayerPrefs.GetInt(level.ToString() + "_unlocked", 0) == 1;
+    }
+
+    public void NotifyLevelCompleted(GameLevel level = GameLevel.Undefined)
+    {
+        level = level == GameLevel.Undefined ? this.FindLevelBySceneName(SceneManager.GetActiveScene().name) : level;
+
+        int index = this._levels.IndexOf(level);
+
+        if (index == -1)
+        {
+            throw new Exception($"Level {level} not found in level list");
+        }
+
+        if (index < this._levels.Count - 1)
+        {
+            GameLevel nextLevel = this._levels[index + 1];
+
+            if (!this.IsLevelUnlocked(nextLevel))
             {
-                this.UnlockLevel(lockedLevel.SceneName);
+                this.UnlockLevel(nextLevel);
+                this.OnLevelUnlocked?.Invoke(nextLevel);
             }
         }
     }
 
-    private LevelInfo GetLevelInfo(string levelName)
+    private static string GetSceneName(GameLevel level)
     {
-        if (this._levelsByName.TryGetValue(levelName, out var level))
-        {
-            return level;
-        }
-
-        throw new System.Exception($"Level {levelName} not found");
+        return level.ToString().ToUpperInvariant();
     }
 
-    public void UnlockLevel(string levelName)
+    public GameLevel FindLevelBySceneName(string sceneName)
     {
-        var level = this.GetLevelInfo(levelName);
-        if (!this._unlockedLevels.Contains(level))
-        {
-            this._unlockedLevels.Add(level);
-            this._recentlyUnlockedLevels.Add(level);
-            this.OnLevelUnlocked?.Invoke(level);
-        }
+        sceneName = sceneName.ToUpperInvariant();
+        return this._levels.FirstOrDefault(l => GetSceneName(l) == sceneName);
     }
 
-    public bool IsLevelUnlocked(string levelName)
+    public GameLevel GetFirstUnlockedLevel()
     {
-        var level = this.GetLevelInfo(levelName);
-        return this._unlockedLevels.Contains(level);
+        return this._levels.FirstOrDefault(l => this.IsLevelUnlocked(l));
     }
 
-    public bool IsLevelRecentlyUnlocked(string levelName)
+    public void LoadNextLevel()
     {
-        var level = this.GetLevelInfo(levelName);
-        return this._recentlyUnlockedLevels.Contains(level);
-    }
-
-    public void ResetRecentlyUnlockedLevels()
-    {
-        this._recentlyUnlockedLevels.Clear();
-    }
-
-    public void NotifyLevelCompleted(string levelName = null)
-    {
-        levelName ??= SceneManager.GetActiveScene().name;
-
-        var level = this.GetLevelInfo(levelName);
-        foreach (var nextLevel in level.UnlocksLevels)
-        {
-            Debug.Log("Unlocking level: " + nextLevel.ToString().ToUpperInvariant());
-            this.UnlockLevel(nextLevel.ToString().ToUpperInvariant());
-        }
+        var levelToPlay = this.GetFirstUnlockedLevel();
+        SceneManager.LoadScene(GetSceneName(levelToPlay));
     }
 }

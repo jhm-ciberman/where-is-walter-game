@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +32,7 @@ public class GuiAvatar : MonoBehaviour
     }
 
 
-    private Image[] _renderers;
+    private Image[] _renderers = Array.Empty<Image>();
 
     private Sprite _initialBodySprite;
 
