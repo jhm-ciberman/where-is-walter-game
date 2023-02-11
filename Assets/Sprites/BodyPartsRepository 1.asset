@@ -29,15 +29,25 @@ MonoBehaviour:
     HandSprite: {fileID: 21300000, guid: 1831b4fefd8cd9048a138bdee6c5444e, type: 3}
     Probability: 1
   Faces:
+  - Sprite: {fileID: 21300000, guid: 7b87a3f362c54c34989fc6b34706951f, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: e00c7ffa245818541ba38025b20d4812, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 3de3d47fd65652a4980686aa5070bc93, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 745e7bbf65edd0440be0a15ff212e631, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 6ac3ebf979891784cac994a47fba5339, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: 3548f3df20e669c4194120329aff1220, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 4b3f54a2c788416468b50d839c8940a1, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 10ae6955c6a6cee4e922ef2216e24e9e, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 0b699c33f3bf2aa488c0f7420a29a9da, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: c0d3a34f986669f4e8f1f1e70673b6fd, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 6fddbd89132eaa44599a7331c102abab, type: 3}
     Probability: 1
@@ -45,29 +55,59 @@ MonoBehaviour:
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 91c782e6be9e4ff489cc5836c824cce1, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: dc1688a6f926d334b89e54e67b0a2720, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 22365e39eb737d7468e7f68cc2e00fde, type: 3}
+    Probability: 1
   Clothes:
+  - Sprite: {fileID: 21300000, guid: bf43a68a42b9f1d449fc2027f41f89e2, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: d268d97e4a5b3fb43919a2e6c3f8f449, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 0b7e1e125a092804db2bba094634d23c, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 94775590a22637849a3ba17133658b42, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 540a0cfc49d1b384e8975752b5d64b89, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 2ca25a34e82d53d43b5bf6f51a87205e, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 743ded043094b8641abb123c641bbb9b, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: 78e3e9d18b691dd4d84f3c060d200e0a, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 991398d54a1c13c43847641071afa91f, type: 3}
     Probability: 1
-  - Sprite: {fileID: 21300000, guid: ef74a2e12325e0a4688dd4c9e637a1c3, type: 3}
+  - Sprite: {fileID: 21300000, guid: 30e3f87acc622ba4e973c1dd18e90e71, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 0d08a42b49b6bd24d8fe37618841811d, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 47b82c0ba27a64946a733c5f39e808ce, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: cbc49c0a8d62c50449eb4a00200aa682, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 865fc928e1450944191719545c2aac5e, type: 3}
     Probability: 1
   Accessories:
   - Sprite: {fileID: 21300000, guid: 5d164891915e54245a4d9be061fa83b2, type: 3}
     Probability: 1
+  - Sprite: {fileID: 21300000, guid: e2b52b2a95b439744a56c558fd6fc4be, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: c455061aaae2a93458733f4277f42766, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 037c69c3c926ec44b9170a3bd88d2c88, type: 3}
+    Probability: 1
   - Sprite: {fileID: 21300000, guid: 5dc2f5c239ccf3a4a92722e5364afa2d, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: e9d072d090678d74bbddc7de0f2d04b8, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 9ea199d829210a042ad9f50d893c1166, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 99d996c04cfaba0449921c8357b247cb, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 48f4640dd08768642a1551fec1283fca, type: 3}
+    Probability: 1
+  - Sprite: {fileID: 21300000, guid: 03432962a9e5f46498cd5c726bc1e9b9, type: 3}
     Probability: 1
   - Sprite: {fileID: 21300000, guid: 9ce754225add32f469d0ee46a2204eae, type: 3}
     Probability: 1

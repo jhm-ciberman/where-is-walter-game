@@ -54,7 +54,8 @@ public class RoomGameManager : MonoBehaviour
     private void WinLevel()
     {
         this._isPlaying = false;
-        LevelManager.Instance.NotifyLevelCompleted();
+        var level = LevelManager.Instance.GetCurrentLevel();
+        LevelManager.Instance.NotifyLevelCompleted(level);
         this.GuiController.ShowGameWon();
 
         DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("MenuArbol"));

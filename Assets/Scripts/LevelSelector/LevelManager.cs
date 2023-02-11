@@ -20,50 +20,65 @@ public class LevelManager
         GameLevel.Bar,
     };
 
+    public enum LevelStatus
+    {
+        Unplayed = 0,
+        Played = 1,
+    }
+
+    private readonly Dictionary<GameLevel, LevelStatus> _levelStatus = new();
+
+    private readonly Dictionary<GameLevel, AvatarAppearance[]> _playerLevelAvatars = new();
+
     public LevelManager()
     {
-        this.UnlockLevel(this._levels.First());
+        bool isInEditor = Application.isEditor;
+
+        // Reset all levels
+        if (isInEditor)
+        {
+            foreach (GameLevel level in this._levels)
+            {
+                this.SetLevelStatus(level, LevelStatus.Unplayed);
+            }
+        }
+    }
+
+    private void SetLevelStatus(GameLevel level, LevelStatus status)
+    {
+        Debug.Log($"Setting level {level} status to {status}");
+        this._levelStatus[level] = status;
+    }
+
+    public LevelStatus GetLevelStatus(GameLevel level)
+    {
+        return this._levelStatus.TryGetValue(level, out LevelStatus status) ? status : LevelStatus.Unplayed;
+    }
+
+    public bool IsLevelWinned(GameLevel level)
+    {
+        return this.GetLevelStatus(level) == LevelStatus.Played;
+    }
+
+    public GameLevel GetCurrentLevel()
+    {
+        return this.FindLevelBySceneName(SceneManager.GetActiveScene().name);
+    }
+
+    public void NotifyLevelCompleted(GameLevel level, IEnumerable<AvatarAppearance> avatars = null)
+    {
+        this.SetLevelStatus(level, LevelStatus.Played);
+    }
+
+    public void SaveAvatarsForLevel(GameLevel level, IEnumerable<AvatarAppearance> avatars)
+    {
+        this._playerLevelAvatars[level] = avatars.ToArray();
     }
 
     public void UnlockLevel(GameLevel level)
     {
-        if (!this.IsLevelUnlocked(level))
-        {
-            PlayerPrefs.SetInt(level.ToString() + "_unlocked", 1);
-            PlayerPrefs.Save();
-
-            Debug.Log($"Level {level} unlocked");
-            this.OnLevelUnlocked?.Invoke(level);
-        }
-
-    }
-
-    public bool IsLevelUnlocked(GameLevel level)
-    {
-        return PlayerPrefs.GetInt(level.ToString() + "_unlocked", 0) == 1;
-    }
-
-    public void NotifyLevelCompleted(GameLevel level = GameLevel.Undefined)
-    {
-        level = level == GameLevel.Undefined ? this.FindLevelBySceneName(SceneManager.GetActiveScene().name) : level;
-
-        int index = this._levels.IndexOf(level);
-
-        if (index == -1)
-        {
-            throw new Exception($"Level {level} not found in level list");
-        }
-
-        if (index < this._levels.Count - 1)
-        {
-            GameLevel nextLevel = this._levels[index + 1];
-
-            if (!this.IsLevelUnlocked(nextLevel))
-            {
-                this.UnlockLevel(nextLevel);
-                this.OnLevelUnlocked?.Invoke(nextLevel);
-            }
-        }
+        this.SetLevelStatus(level, LevelStatus.Unplayed);
+        this.OnLevelUnlocked?.Invoke(level);
     }
 
     private static string GetSceneName(GameLevel level)
@@ -74,17 +89,51 @@ public class LevelManager
     public GameLevel FindLevelBySceneName(string sceneName)
     {
         sceneName = sceneName.ToUpperInvariant();
-        return this._levels.FirstOrDefault(l => GetSceneName(l) == sceneName);
+        var level = this._levels.FirstOrDefault(l => GetSceneName(l) == sceneName);
+
+        if (level == GameLevel.Undefined)
+        {
+            throw new Exception($"Cannot find level for scene {sceneName}");
+        }
+
+        return level;
     }
 
-    public GameLevel GetFirstUnlockedLevel()
+    public GameLevel GetNextLevelToPlay()
     {
-        return this._levels.FirstOrDefault(l => this.IsLevelUnlocked(l));
+        return this._levels.FirstOrDefault(l => this.GetLevelStatus(l) == LevelStatus.Unplayed);
     }
 
     public void LoadNextLevel()
     {
-        var levelToPlay = this.GetFirstUnlockedLevel();
-        SceneManager.LoadScene(GetSceneName(levelToPlay));
+        GameLevel nextLevel = this.GetNextLevelToPlay();
+
+        if (nextLevel == GameLevel.Undefined)
+        {
+            Debug.Log("No more levels to unlock");
+            return;
+        }
+
+        SceneManager.LoadScene(GetSceneName(nextLevel));
+    }
+
+    public AvatarAppearance GetAvatarForLevel(GameLevel level, int index)
+    {
+        if (!this._playerLevelAvatars.TryGetValue(level, out AvatarAppearance[] avatars))
+        {
+            throw new Exception($"Cannot find avatars for level {level}");
+        }
+
+        if (index < 0 || index >= avatars.Length)
+        {
+            throw new Exception($"Cannot find avatar {index} for level {level}. Only {avatars.Length} avatars found");
+        }
+
+        return avatars[index];
+    }
+
+    public bool HasSavedAvatarsForLevel(GameLevel level)
+    {
+        return this._playerLevelAvatars.ContainsKey(level);
     }
 }

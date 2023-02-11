@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6d32b24fdaf584388781e372d9ad35, type: 3}
   m_Name: MediumMovePreset
   m_EditorClassIdentifier: 
-  Speed: 0.54
+  Speed: 1.39
   BounceHeight: 0.26
   BounceSpeed: 1.71
   SwingAngle: 9.45

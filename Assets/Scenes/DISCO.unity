@@ -599,8 +599,11 @@ MonoBehaviour:
   BodyPartsController: {fileID: 754714083}
   GuiController: {fileID: 1736465331}
   SpawnerController: {fileID: 754714084}
-  NumberOfTargetsToFind: 3
-  NumberOfExtras: 25
+  GlobalAvatarTimeScale: 0.35
+  NumberOfTargetsToFind: 2
+  NumberOfExtras: 20
+  MaxNumberOfAttempts: 3
+  NextSceneName: MenuArbol
 --- !u!4 &754714086
 Transform:
   m_ObjectHideFlags: 0

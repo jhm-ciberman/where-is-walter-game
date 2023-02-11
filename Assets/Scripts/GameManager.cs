@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
+    private readonly List<AvatarAppearance> _initialTargetsToFind = new List<AvatarAppearance>();
+
     private int _attempts = 0;
 
     private enum GameState
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
             var appearance = this.BodyPartsController.GetRandomAppearance();
             this.BodyPartsController.ExcludeAppearance(appearance);
             this._targetsToFind.Add(appearance);
+            this._initialTargetsToFind.Add(appearance);
             this.SpawnerController.SpawnRandom(appearance);
         }
 
@@ -119,8 +122,20 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public bool OnClickAvatar(AvatarMovementController avatarController)
+    public enum ClickResult
     {
+        None,
+        Correct,
+        Incorrect,
+    }
+
+    public ClickResult OnClickAvatar(AvatarMovementController avatarController)
+    {
+        if (this._gameState != GameState.Playing)
+        {
+            return ClickResult.None;
+        }
+
         if (this._targetsToFind.Contains(avatarController.Appearance))
         {
             this._targetsToFind.Remove(avatarController.Appearance);
@@ -130,9 +145,10 @@ public class GameManager : MonoBehaviour
                 this.WinLevel();
             }
 
-            return true;
+            return ClickResult.Correct;
         }
-        else if (this._attempts < this.MaxNumberOfAttempts)
+
+        if (this._attempts < this.MaxNumberOfAttempts)
         {
             this._attempts++;
 
@@ -143,12 +159,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        return false;
+        return ClickResult.Incorrect;
     }
 
     private void WinLevel()
     {
-        LevelManager.Instance.NotifyLevelCompleted();
+        var level = LevelManager.Instance.GetCurrentLevel();
+        LevelManager.Instance.NotifyLevelCompleted(level);
+        LevelManager.Instance.SaveAvatarsForLevel(level, this._initialTargetsToFind);
+
         this._gameState = GameState.GameWon;
         this.GuiController.ShowGameWon();
         // Load next scene

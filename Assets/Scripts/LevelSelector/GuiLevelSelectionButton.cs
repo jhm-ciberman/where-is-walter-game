@@ -10,6 +10,8 @@ public class GuiLevelSelectionButton : MonoBehaviour
 
     public GameLevel Level = GameLevel.Undefined;
 
+    public int AvatarIndex = -1;
+
     public GuiAvatar Avatar;
 
     public Button Button;
@@ -22,40 +24,21 @@ public class GuiLevelSelectionButton : MonoBehaviour
     {
         if (this.Level == GameLevel.Undefined)
         {
-            throw new System.Exception($"LevelName is not set in {this.name}");
+            this.SetUnlocked(false);
         }
-
-        bool isUnlocked = LevelManager.Instance.IsLevelUnlocked(this.Level);
-        this.SetUnlocked(isUnlocked);
-
-        LevelManager.Instance.OnLevelUnlocked += this.OnLevelUnlocked;
-    }
-
-    public void OnDestroy()
-    {
-        LevelManager.Instance.OnLevelUnlocked -= this.OnLevelUnlocked;
-    }
-
-    private void OnLevelUnlocked(GameLevel level)
-    {
-        if (level == this.Level)
+        else
         {
-            this.SetUnlocked(true);
+            this.SetUnlocked(LevelManager.Instance.IsLevelWinned(this.Level));
         }
+
+        this.Avatar.Appearance = LevelManager.Instance.HasSavedAvatarsForLevel(this.Level)
+            ? LevelManager.Instance.GetAvatarForLevel(this.Level, this.AvatarIndex)
+            : null;
     }
 
     private void SetUnlocked(bool isUnlocked)
     {
         this.Button.interactable = isUnlocked;
         this.Avatar.SetColor(isUnlocked ? this.UnlockedColor : this.LockedColor);
-    }
-
-    public void OnClick()
-    {
-        if (!LevelManager.Instance.IsLevelUnlocked(this.Level))
-        {
-            return;
-        }
-        SceneManager.LoadScene(this.Level.ToString().ToUpperInvariant());
     }
 }

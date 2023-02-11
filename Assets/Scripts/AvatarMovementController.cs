@@ -150,13 +150,13 @@ public class AvatarMovementController : MonoBehaviour
             return;
         }
 
-        bool isCorrect = GameManager.Instance.OnClickAvatar(this);
+        var result = GameManager.Instance.OnClickAvatar(this);
 
-        if (isCorrect)
+        if (result == GameManager.ClickResult.Correct)
         {
             StartRocketing();
         }
-        else
+        else if (result == GameManager.ClickResult.Incorrect)
         {
             StopWalking();
 

@@ -57,7 +57,7 @@ public class DialogTreeSequence : MonoBehaviour
         this.DialogBoxController.DialogFinished += this.OnDialogFinished;
         this.DialogBoxController.MessageStarted += this.OnMessageChanged;
 
-        GameLevel level = LevelManager.Instance.GetFirstUnlockedLevel();
+        GameLevel level = LevelManager.Instance.GetNextLevelToPlay();
 
         if (!this._messages.ContainsKey(level))
         {

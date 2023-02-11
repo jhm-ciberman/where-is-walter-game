@@ -11,13 +11,23 @@ public class SpawnerController : MonoBehaviour
 
     public List<MovePreset> MovePresets;
 
-    private System.Random _random = new System.Random();
+    private readonly System.Random _random = new System.Random();
 
     public float DeltaTimeScaleRange = 0.1f;
+
+    private int _currentLaneIndex = 0;
 
     public void Start()
     {
         this._avatars.Clear();
+        this._currentLaneIndex = this._random.Next(this.Lanes.Count);
+    }
+
+    private SpawnLane NextLane()
+    {
+        var lane = this.Lanes[this._currentLaneIndex];
+        this._currentLaneIndex = (this._currentLaneIndex + 1) % this.Lanes.Count;
+        return lane;
     }
 
     public void Spawn(AvatarAppearance appearance, SpawnLane lane, float laneProgress, MovePreset movePreset)
@@ -44,7 +54,7 @@ public class SpawnerController : MonoBehaviour
 
     public void SpawnRandom(AvatarAppearance appearance)
     {
-        var lane = this.Lanes[this._random.Next(this.Lanes.Count)];
+        var lane = this.NextLane();
         var movePreset = this.MovePresets[this._random.Next(this.MovePresets.Count)];
         var progress = (float)this._random.NextDouble();
         this.Spawn(appearance, lane, progress, movePreset);
