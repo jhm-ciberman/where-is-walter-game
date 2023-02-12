@@ -9,9 +9,11 @@ public class GuiController : MonoBehaviour
 {
     public TextMeshProUGUI RemainingTimeText;
 
-    public TextMeshProUGUI GameOverText;
+    public Transform OutOfAttemptsDisplay;
 
-    public TextMeshProUGUI WinText;
+    public Transform OutOfTimeDisplay;
+
+    public Transform WinDisplay;
 
     public TextMeshProUGUI AttemptsText;
 
@@ -19,17 +21,46 @@ public class GuiController : MonoBehaviour
 
     public GuiThumbnailComponent[] TargetsThumbnails;
 
-    public void Start()
+    public enum LooseReason
     {
-        this.GameOverText.gameObject.SetActive(false);
-        this.WinText.gameObject.SetActive(false);
+        OutOfTime,
+        OutOfAttempts,
     }
 
-    public void ShowGameOver()
+    public void Start()
     {
-        this.GameOverText.gameObject.SetActive(true);
+        this.OutOfAttemptsDisplay.gameObject.SetActive(false);
+        this.OutOfTimeDisplay.gameObject.SetActive(false);
+        this.WinDisplay.gameObject.SetActive(false);
+    }
 
-        this.AnimateSlidingUp(this.GameOverText.transform);
+    public void ShowGameOver(LooseReason reason)
+    {
+        switch (reason)
+        {
+            case LooseReason.OutOfAttempts:
+                this.ShowOutOfAttempts();
+                break;
+            case LooseReason.OutOfTime:
+                this.ShowOutOfTime();
+                break;
+            default:
+                throw new System.Exception("Unknown reason");
+        }
+    }
+
+    private void ShowOutOfTime()
+    {
+        this.OutOfTimeDisplay.gameObject.SetActive(true);
+
+        this.AnimateSlidingUp(this.OutOfTimeDisplay.transform);
+    }
+
+    private void ShowOutOfAttempts()
+    {
+        this.OutOfAttemptsDisplay.gameObject.SetActive(true);
+
+        this.AnimateSlidingUp(this.OutOfAttemptsDisplay.transform);
     }
 
     public void SetRemainingTime(float remainingTime)
@@ -39,9 +70,9 @@ public class GuiController : MonoBehaviour
 
     internal void ShowGameWon()
     {
-        this.WinText.gameObject.SetActive(true);
+        this.WinDisplay.gameObject.SetActive(true);
 
-        this.AnimateSlidingUp(this.WinText.transform);
+        this.AnimateSlidingUp(this.WinDisplay.transform);
     }
 
     private void AnimateSlidingUp(Transform transform)

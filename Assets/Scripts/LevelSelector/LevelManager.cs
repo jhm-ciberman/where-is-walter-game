@@ -136,4 +136,15 @@ public class LevelManager
     {
         return this._playerLevelAvatars.ContainsKey(level);
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResetProgress()
+    {
+        this._levelStatus.Clear();
+        this._playerLevelAvatars.Clear();
+    }
 }

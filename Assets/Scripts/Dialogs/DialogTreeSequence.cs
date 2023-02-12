@@ -56,16 +56,15 @@ public class DialogTreeSequence : MonoBehaviour
             "Finally! I thought I was forgotten.",
             "I'm looking for information about my family... but I can't find anything!",
             "I can't leave until I complete my task. Can you help me?",
-            "I know you're too lazy to do community service!",
-            "Late! You're here now, and do you have anything more important to do?",
-            "Just as I thought! Let's get started.",
             "[ShowTreeUI]",
             "By the way, I haven't introduced myself yet. I'm walter, nice to meet you!",
             "This is my family tree!",
             "As you can see, there are many relatives to discover.",
             "Before we start our journey, I need some items.",
             "[ShowOverlay]",
-            "I think I have everything in my room! Choose the square to start.",
+            "I think I have everything in my room!",
+            "I will show you two items and you need to find them in my room.",
+            "Let's start!"
         },
         [GameLevel.Disco] = new [] {
             "That was better than I expected! I never doubted your abilities!",
@@ -87,8 +86,14 @@ public class DialogTreeSequence : MonoBehaviour
             "Last effort, we can do it!",
         },
         [GameLevel.Ending] = new [] {
+            "[ShowTreeUI]",
+            "Wow! You found all the relatives!",
             "[ShowConfetti]",
             "Yay! Thanks to you I was able to recover my family tree. You're the best!",
+            "Thanks for playing!",
+            "Without you this game wouldn't be possible.",
+            "This mini game was created for the 2021 Global Game Jam.",
+            "[ResetProgress]",
         },
     };
 
@@ -132,7 +137,14 @@ public class DialogTreeSequence : MonoBehaviour
             case "[ShowTreeUI]": this.ShowTreeUICommand(); break;
             case "[ShowOverlay]": this.ShowOverlayCommand(); break;
             case "[ShowConfetti]": this.ShowConfettiCommand(); break;
+            case "[ResetProgress]": this.ResetProgressCommand(); break;
         }
+    }
+
+    private void ResetProgressCommand()
+    {
+        LevelManager.Instance.ResetProgress();
+        this.DialogBoxController.NextMessage();
     }
 
     private void ShowConfettiCommand()

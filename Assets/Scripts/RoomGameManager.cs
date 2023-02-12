@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
-using System;
 
 public class RoomGameManager : MonoBehaviour
 {
@@ -46,7 +43,7 @@ public class RoomGameManager : MonoBehaviour
         if (this._remainingTime < 0)
         {
             this._remainingTime = 0;
-            this.LooseLevel();
+            this.LooseLevel(GuiController.LooseReason.OutOfTime);
         }
 
         this.GuiController.SetRemainingTime(this._remainingTime);
@@ -63,12 +60,12 @@ public class RoomGameManager : MonoBehaviour
         DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("TreeMenu"));
     }
 
-    private void LooseLevel()
+    private void LooseLevel(GuiController.LooseReason reason)
     {
         this._isPlaying = false;
-        this.GuiController.ShowGameOver();
+        this.GuiController.ShowGameOver(reason);
 
-        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("TreeMenu"));
+        DOVirtual.DelayedCall(3f, () => LevelManager.Instance.RestartLevel());
     }
 
     public void Propfound(RoomProp prop)
@@ -101,7 +98,7 @@ public class RoomGameManager : MonoBehaviour
 
             if (this.Attempts == 0)
             {
-                LooseLevel();
+                LooseLevel(GuiController.LooseReason.OutOfAttempts);
             }
         }
     }

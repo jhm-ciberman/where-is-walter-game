@@ -177,7 +177,7 @@ MonoBehaviour:
   CameraController: {fileID: 1794506952}
   GuiController: {fileID: 910601576}
   TotalTime: 60
-  Attempts: 4
+  Attempts: 2
 --- !u!4 &118137078
 Transform:
   m_ObjectHideFlags: 0

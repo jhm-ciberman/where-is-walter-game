@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
             if (this.RemainingTime <= 0)
             {
-                this.LooseLevel();
+                this.LooseLevel(GuiController.LooseReason.OutOfTime);
             }
         }
 
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
         if (this._attempts >= this.MaxNumberOfAttempts)
         {
-            this.LooseLevel(3f);
+            this.LooseLevel(GuiController.LooseReason.OutOfAttempts, 2f);
         }
     }
 
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
         DOVirtual.DelayedCall(7f, () => SceneManager.LoadScene("TreeMenu"));
     }
 
-    private void LooseLevel(float delay = 0f)
+    private void LooseLevel(GuiController.LooseReason reason, float delay = 0f)
     {
         if (this._gameState == GameState.GameOver)
         {
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         }
         this._gameState = GameState.GameOver;
 
-        DOVirtual.DelayedCall(delay + 1f, () => this.GuiController.ShowGameOver());
-        DOVirtual.DelayedCall(delay + 4f, () => SceneManager.LoadScene("TreeMenu"));
+        DOVirtual.DelayedCall(delay + 1f, () => this.GuiController.ShowGameOver(reason));
+        DOVirtual.DelayedCall(delay + 4f, () => LevelManager.Instance.RestartLevel());
     }
 }
