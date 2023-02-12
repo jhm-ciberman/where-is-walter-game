@@ -27,7 +27,8 @@ public class DialogTreeSequence : MonoBehaviour
             "¡Eso fue mejor de lo que esperaba! nunca dudé en tus habilidades!",
             "...bueno, tal vez un poco jeje",
             "[ShowTreeUI]",
-            "Ahora tenemos que encontrar a mis padres, estoy seguro que se fueron de fiesta.",
+            "Ahora tenemos que encontrar a mis padres.",
+            "Estoy seguro que se fueron de fiesta.",
         },
         [GameLevel.BigBen] = new [] {
             "¡Oh wow! En serio podemos lograrlo, pensé que iba a ser imposible.",

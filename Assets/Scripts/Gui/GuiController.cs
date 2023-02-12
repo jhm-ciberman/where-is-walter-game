@@ -15,6 +15,8 @@ public class GuiController : MonoBehaviour
 
     public TextMeshProUGUI AttemptsText;
 
+    public RectTransform StatsPanel;
+
     public GuiThumbnailComponent[] TargetsThumbnails;
 
     public void Start()
@@ -110,5 +112,15 @@ public class GuiController : MonoBehaviour
     internal void SetRemainingAttempts(int attempts)
     {
         this.AttemptsText.text = attempts.ToString("00");
+    }
+
+    private bool _isCutscene = false;
+
+    internal void SetCutsceneMode(bool activated)
+    {
+        if (this._isCutscene == activated) return;
+
+        this._isCutscene = activated;
+        this.StatsPanel.gameObject.SetActive(!activated);
     }
 }

@@ -279,7 +279,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -293,10 +293,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750d8ad371c89704f8599c635ae934d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 519420031}
   WiggleDelta: {x: 2.011, y: 0.11}
   WiggleSpeed: {x: 0.67, y: 1.73}
   MicroWiggleDelta: {x: 0.56, y: 0.2}
   MicroWiggleSpeed: {x: 4.97, y: 1.41}
+  BackgroundBounds: {fileID: 922867313}
+  FocusTransitionDuration: 0.5
+  DefaultFocusSize: 3
+  ExtraPadding: 0.2
 --- !u!1 &712088030
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +688,7 @@ MonoBehaviour:
   BodyPartsController: {fileID: 1123030340}
   GuiController: {fileID: 216016089}
   SpawnerController: {fileID: 1123030339}
+  CameraController: {fileID: 519420033}
   GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 2
   NumberOfExtras: 21
@@ -701,7 +707,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1123030339
 MonoBehaviour:

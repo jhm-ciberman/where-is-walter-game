@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class AvatarMovementController : MonoBehaviour
     }
 
     public AvatarAppearanceController AppearanceController;
+
+    public GameObject SmokeParticlePrefab;
 
     private SpawnLane _lane;
 
@@ -40,11 +43,19 @@ public class AvatarMovementController : MonoBehaviour
 
     public float RocketAcceleration = 100f;
 
+    public GameObject ExplosionParticlePrefab;
+
+    private float _flipCountdown = 0f;
+
+    private System.Random _random;
+
 
     public void InitializeRandom(System.Random random)
     {
+        this._random = random;
         this._bounceTime = (float)random.NextDouble();
         this._swingTime = this._bounceTime;
+        this._flipCountdown = this.NextFlipCountdown();
     }
 
     public void SetLane(SpawnLane lane, float progress)
@@ -129,12 +140,27 @@ public class AvatarMovementController : MonoBehaviour
         {
             this._rocketTime += dt;
 
-            if (this._rocketTime > 0.5f)
+            if (this._rocketTime > 0.4f)
             {
                 this._rocketSpeed += this.RocketAcceleration * dt;
                 this.transform.position += Vector3.up * this._rocketSpeed;
             }
         }
+
+        if (this.CurrentState == State.Walking)
+        {
+            this._flipCountdown -= dt;
+            if (this._flipCountdown < 0f)
+            {
+                this._flipCountdown = this.NextFlipCountdown();
+                this.CurrentDirection = (Direction)(-(int)this.CurrentDirection);
+            }
+        }
+    }
+
+    private float NextFlipCountdown()
+    {
+        return (float)this._random.NextDouble() * 6f + 3f;
     }
 
     // a simple curve that bounces 1 time (half a sine wave)
@@ -145,33 +171,27 @@ public class AvatarMovementController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (this.CurrentState == State.Rocketing)
+        if (this.CurrentState == State.Walking)
         {
-            return;
+            GameManager.Instance.OnClickAvatar(this);
         }
 
-        var result = GameManager.Instance.OnClickAvatar(this);
+    }
 
-        if (result == GameManager.ClickResult.Correct)
-        {
-            StartRocketing();
-        }
-        else if (result == GameManager.ClickResult.Incorrect)
-        {
-            StopWalking();
+    public void PlayIncorrectAnimation()
+    {
+        this.CurrentState = State.Stoped;
 
-            // Tint interpolate color to red and back
-            var sequence = DOTween.Sequence();
-            var red = new Color(0.8f, 0.2f, 0.2f);
-            this.AppearanceController.SetTint(red);
-            for (int i = 0; i < 5; i++)
-            {
-                sequence.Append(this.AppearanceController.TintToColor(Color.white, 0.2f));
-                sequence.Append(this.AppearanceController.TintToColor(red, 0.2f));
-            }
-            sequence.Append(this.AppearanceController.TintToColor(Color.white, 0.2f));
-            sequence.OnComplete(() => this.StartWalking());
+        // Tint interpolate color to red and back
+        var sequence = DOTween.Sequence();
+        var red = new Color(0.8f, 0.2f, 0.2f);
+        this.AppearanceController.SetTint(red);
+        for (int i = 0; i < 4; i++)
+        {
+            sequence.Append(this.AppearanceController.TintToColor(Color.white, 0.15f));
+            sequence.Append(this.AppearanceController.TintToColor(red, 0.15f));
         }
+        sequence.OnComplete(() => this.Explode());
     }
 
     public void OnMouseEnter()
@@ -184,14 +204,17 @@ public class AvatarMovementController : MonoBehaviour
         this.AppearanceController.SetHighlight(false);
     }
 
-    public void StopWalking()
+    public void PlayCorrectAnimation()
     {
-        this.CurrentState = State.Stoped;
-    }
+        if (this.CurrentState == State.Rocketing) return;
 
-    public void StartRocketing()
-    {
         this.CurrentState = State.Rocketing;
+
+        Quaternion smokeRotation = Quaternion.Euler(90, 0, 0);
+        Instantiate(this.SmokeParticlePrefab, this.transform.position, smokeRotation, this.transform);
+
+        this.AppearanceController.SetHighlight(false);
+        this.AppearanceController.SetSortingOrder(1000);
     }
 
     public void StartWalking()
@@ -199,5 +222,20 @@ public class AvatarMovementController : MonoBehaviour
         this.CurrentState = State.Walking;
         this._doNotBounceAnymore = false;
         this._doNotSwingAnymore = false;
+    }
+
+    public Vector3 GetHeadPosition()
+    {
+        return this.AppearanceController.GetHeadPosition();
+    }
+
+    public void Explode()
+    {
+        var headPosition = this.GetHeadPosition();
+        GameObject.Instantiate(this.ExplosionParticlePrefab, headPosition, Quaternion.identity);
+        GameObject.Destroy(this.gameObject, .25f);
+
+        var pos = this.transform.localPosition;
+        this.transform.localPosition = pos + Vector3.forward * 0.1f; // move forward a bit so its hidden behind the explode particle
     }
 }

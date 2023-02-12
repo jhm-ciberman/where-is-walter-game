@@ -415,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426672346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 6.71}
+  m_LocalPosition: {x: 0, y: 0.21, z: 6.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {fileID: 701634872}
   End: {fileID: 784886901}
-  AvatarSize: 1.52
+  AvatarSize: 1.91
   PreviewAvatarProgress: 0.499
   SortingLayerForAvatars: 1
 --- !u!1 &701634871
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701634871}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.16, y: -1.21, z: 0}
+  m_LocalPosition: {x: -3.59, y: -1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -527,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784886900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.12, y: -1.24, z: 0}
+  m_LocalPosition: {x: 3.38, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -746,10 +746,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750d8ad371c89704f8599c635ae934d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 1193561598}
   WiggleDelta: {x: 3, y: 0.46}
   WiggleSpeed: {x: 0.67, y: 1.73}
   MicroWiggleDelta: {x: 0.6, y: 0.2}
   MicroWiggleSpeed: {x: 0.9, y: 0.7}
+  BackgroundBounds: {fileID: 359935632}
+  FocusTransitionDuration: 0.5
+  DefaultFocusSize: 3
+  ExtraPadding: 0.2
 --- !u!1 &1512959103
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512959103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.19}
+  m_LocalPosition: {x: 0, y: -0.8, z: 4.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -798,8 +803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {fileID: 1640638664}
   End: {fileID: 296932856}
-  AvatarSize: 3.66
-  PreviewAvatarProgress: 0.206
+  AvatarSize: 3.69
+  PreviewAvatarProgress: 0.185
   SortingLayerForAvatars: 3
 --- !u!1 &1640638663
 GameObject:
@@ -901,9 +906,10 @@ MonoBehaviour:
   BodyPartsController: {fileID: 1713521991}
   GuiController: {fileID: 2117647510}
   SpawnerController: {fileID: 1713521992}
+  CameraController: {fileID: 1193561600}
   GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 2
-  NumberOfExtras: 22
+  NumberOfExtras: 20
   MaxNumberOfAttempts: 3
   NextSceneName: MenuArbol
 --- !u!4 &1713521994
@@ -983,7 +989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020673802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.36}
+  m_LocalPosition: {x: 0, y: -0.63, z: 5.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1006,8 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {fileID: 1104395175}
   End: {fileID: 739629469}
-  AvatarSize: 2.39
-  PreviewAvatarProgress: 0.434
+  AvatarSize: 2.47
+  PreviewAvatarProgress: 0.35
   SortingLayerForAvatars: 2
 --- !u!1001 &2117647509
 PrefabInstance:
@@ -1103,6 +1109,10 @@ PrefabInstance:
     - target: {fileID: 5762914228510345935, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762914228510345935, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}

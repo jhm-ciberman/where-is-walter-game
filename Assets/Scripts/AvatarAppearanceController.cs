@@ -111,4 +111,9 @@ public class AvatarAppearanceController : MonoBehaviour
             renderer.material = isHighlighted ? this.HighlightMaterial : this.DefaultMaterial;
         }
     }
+
+    internal Vector3 GetHeadPosition()
+    {
+        return this.transform.position + Vector3.up * this.transform.localScale.y * 0.5f;
+    }
 }

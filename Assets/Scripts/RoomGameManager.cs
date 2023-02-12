@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using System;
 
 public class RoomGameManager : MonoBehaviour
 {
     public static RoomGameManager Instance;
     public RectTransform UsbGameObject;
     public RectTransform PhoneGameObject;
+    public CameraController CameraController;
     private bool _usbFound = false;
     private bool _phoneFound = false;
     public GuiController GuiController;
@@ -69,20 +71,30 @@ public class RoomGameManager : MonoBehaviour
         DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("MenuArbol"));
     }
 
-    public void Propfound(PropType propType)
+    public void Propfound(RoomProp prop)
     {
-        if (propType == PropType.USB)
+        this.CameraController.FocusOn(prop.transform.position, 0f, 2f);
+
+        DOVirtual.DelayedCall(0.5f, () => this.HandlePropFound(prop));
+    }
+
+    private void HandlePropFound(RoomProp prop)
+    {
+        if (prop.PropType == PropType.USB)
         {
             this.GuiController.MarkTargetObjectAsFound(this.UsbGameObject);
             this._usbFound = true;
+            prop.Found();
         }
-        else if (propType == PropType.PHONE)
+        else if (prop.PropType == PropType.PHONE)
         {
             this.GuiController.MarkTargetObjectAsFound(this.PhoneGameObject);
             this._phoneFound = true;
+            prop.Found();
         }
         else
         {
+            prop.Explode();
             this.Attempts--;
             this.GuiController.SetRemainingTime(this._remainingTime);
             this.GuiController.SetRemainingAttempts(this.Attempts);

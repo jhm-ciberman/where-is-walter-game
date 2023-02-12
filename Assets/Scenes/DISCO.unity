@@ -599,6 +599,7 @@ MonoBehaviour:
   BodyPartsController: {fileID: 754714083}
   GuiController: {fileID: 1736465331}
   SpawnerController: {fileID: 754714084}
+  CameraController: {fileID: 1441847966}
   GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 2
   NumberOfExtras: 20
@@ -643,8 +644,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051586290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -831,10 +832,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750d8ad371c89704f8599c635ae934d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 1441847964}
   WiggleDelta: {x: 2.8, y: 0.5}
   WiggleSpeed: {x: 0.67, y: 1.73}
   MicroWiggleDelta: {x: 0.6, y: 0.2}
   MicroWiggleSpeed: {x: 0.9, y: 0.7}
+  BackgroundBounds: {fileID: 1051586292}
+  FocusDuration: 0.5
+  DefaultFocusSize: 3
 --- !u!1 &1599936368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,10 +1047,6 @@ PrefabInstance:
     - target: {fileID: 5762914228510345935, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5762914228510345935, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbcedc9dc93145c4f9ac3ff72c705c2b, type: 3}

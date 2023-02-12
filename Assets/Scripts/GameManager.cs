@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public SpawnerController SpawnerController;
 
+    public CameraController CameraController;
+
     public float RemainingTime { get; private set; }
 
     public float GlobalAvatarTimeScale = 0.35f;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         Playing,
         GameOver,
         GameWon,
+        Cutscene,
     }
 
     private GameState _gameState = GameState.Playing;
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
             this.SpawnerController.SpawnRandom(appearance);
         }
 
+        this.GuiController.gameObject.SetActive(true);
         this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts);
         this.GuiController.SetRemainingTime(this.RemainingTime);
     }
@@ -108,18 +112,9 @@ public class GameManager : MonoBehaviour
             {
                 this.LooseLevel();
             }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                this.WinLevel();
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                this.LooseLevel();
-            }
         }
 
+        this.GuiController.SetCutsceneMode(this._gameState != GameState.Playing);
     }
 
     public enum ClickResult
@@ -138,54 +133,85 @@ public class GameManager : MonoBehaviour
 
         if (this._targetsToFind.Contains(avatarController.Appearance))
         {
-            this._targetsToFind.Remove(avatarController.Appearance);
-            this.GuiController.MarkTargetAvatarAsFound(avatarController.Appearance);
-            if (this._targetsToFind.Count == 0)
-            {
-                this.WinLevel();
-            }
+            this.ClickAvatarCorrect(avatarController);
 
             return ClickResult.Correct;
         }
 
-        if (this._attempts < this.MaxNumberOfAttempts)
-        {
-            this._attempts++;
-
-            this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
-            if (this._attempts >= this.MaxNumberOfAttempts)
-            {
-                this.LooseLevel();
-            }
-        }
+        this.ClickAvatarIncorrect(avatarController);
 
         return ClickResult.Incorrect;
     }
 
+    private void ClickAvatarCorrect(AvatarMovementController avatarController)
+    {
+        this._targetsToFind.Remove(avatarController.Appearance);
+        this.GuiController.MarkTargetAvatarAsFound(avatarController.Appearance);
+
+        this._gameState = GameState.Cutscene;
+        avatarController.PlayCorrectAnimation();
+        var headPosition = avatarController.GetHeadPosition();
+        this.CameraController.FocusOn(headPosition, 0f, 3f);
+        DOVirtual.DelayedCall(3f, () => this.ReturnToPlayFromCutscene());
+
+        if (this._targetsToFind.Count == 0)
+        {
+            this.WinLevel();
+        }
+    }
+
+    private void ReturnToPlayFromCutscene()
+    {
+        if (this._gameState == GameState.Cutscene)
+        {
+            this._gameState = GameState.Playing;
+        }
+    }
+
+    private void ClickAvatarIncorrect(AvatarMovementController avatarController)
+    {
+        if (this._attempts >= this.MaxNumberOfAttempts) return;
+
+        this._attempts++;
+
+        this._gameState = GameState.Cutscene;
+        avatarController.PlayIncorrectAnimation();
+        var headPosition = avatarController.GetHeadPosition();
+        this.CameraController.FocusOn(headPosition, 0f, 2f);
+        DOVirtual.DelayedCall(2f, () => this.ReturnToPlayFromCutscene());
+
+        this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
+        if (this._attempts >= this.MaxNumberOfAttempts)
+        {
+            this.LooseLevel(3f);
+        }
+    }
+
     private void WinLevel()
     {
+        if (this._gameState == GameState.GameWon)
+        {
+            return;
+        }
+        this._gameState = GameState.GameWon;
+
         var level = LevelManager.Instance.GetCurrentLevel();
         LevelManager.Instance.NotifyLevelCompleted(level);
         LevelManager.Instance.SaveAvatarsForLevel(level, this._initialTargetsToFind);
 
-        this._gameState = GameState.GameWon;
-        this.GuiController.ShowGameWon();
-        // Load next scene
-        DOVirtual.DelayedCall(3f, () =>
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
-        });
+        DOVirtual.DelayedCall(4f, () => this.GuiController.ShowGameWon());
+        DOVirtual.DelayedCall(7f, () => SceneManager.LoadScene(this.NextSceneName));
     }
 
-    private void LooseLevel()
+    private void LooseLevel(float delay = 0f)
     {
-        this._gameState = GameState.GameOver;
-        this.GuiController.ShowGameOver();
-
-        // Load next scene
-        DOVirtual.DelayedCall(3f, () =>
+        if (this._gameState == GameState.GameOver)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(this.NextSceneName);
-        });
+            return;
+        }
+        this._gameState = GameState.GameOver;
+
+        DOVirtual.DelayedCall(delay + 1f, () => this.GuiController.ShowGameOver());
+        DOVirtual.DelayedCall(delay + 4f, () => SceneManager.LoadScene(this.NextSceneName));
     }
 }
