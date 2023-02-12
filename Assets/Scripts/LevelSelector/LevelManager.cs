@@ -110,7 +110,7 @@ public class LevelManager
 
         if (nextLevel == GameLevel.Undefined)
         {
-            Debug.Log("No more levels to unlock");
+            SceneManager.LoadScene("Credits");
             return;
         }
 

@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {fileID: 701634872}
   End: {fileID: 784886901}
-  AvatarSize: 1.91
+  AvatarSize: 1.73
   PreviewAvatarProgress: 0.499
   SortingLayerForAvatars: 1
 --- !u!1 &701634871
@@ -754,7 +754,7 @@ MonoBehaviour:
   BackgroundBounds: {fileID: 359935632}
   FocusTransitionDuration: 0.5
   DefaultFocusSize: 3
-  ExtraPadding: 0.2
+  ExtraPadding: 0.43
 --- !u!1 &1512959103
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ MonoBehaviour:
   CameraController: {fileID: 1193561600}
   GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 2
-  NumberOfExtras: 20
+  NumberOfExtras: 19
   MaxNumberOfAttempts: 3
   NextSceneName: MenuArbol
 --- !u!4 &1713521994

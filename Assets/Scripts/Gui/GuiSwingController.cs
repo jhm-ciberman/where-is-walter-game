@@ -23,6 +23,11 @@ public class GuiSwingController : MonoBehaviour
 
     public void Start()
     {
+        if (this.AvatarTransform == null)
+        {
+            this.AvatarTransform = this.GetComponent<RectTransform>();
+        }
+
         this._swingTime = UnityEngine.Random.Range(0f, 100f);
         this.SwingSpeed += UnityEngine.Random.Range(-0.1f, 0.1f);
         this._initialAvatarPosition = this.AvatarTransform.localPosition;
