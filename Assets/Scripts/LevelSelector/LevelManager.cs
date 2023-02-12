@@ -110,11 +110,11 @@ public class LevelManager
 
         if (nextLevel == GameLevel.Undefined)
         {
-            SceneManager.LoadScene("Credits");
+            LevelManager.Instance.TransitionToScene("Credits");
             return;
         }
 
-        SceneManager.LoadScene(GetSceneName(nextLevel));
+        LevelManager.Instance.TransitionToScene(GetSceneName(nextLevel));
     }
 
     public AvatarAppearance GetAvatarForLevel(GameLevel level, int index)
@@ -139,12 +139,18 @@ public class LevelManager
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LevelManager.Instance.TransitionToScene(SceneManager.GetActiveScene().name);
     }
 
     public void ResetProgress()
     {
         this._levelStatus.Clear();
         this._playerLevelAvatars.Clear();
+    }
+
+    public void TransitionToScene(string sceneName)
+    {
+        TransitionManager transitionManager = Resources.Load<TransitionManager>("TransitionManager");
+        MonoBehaviour.Instantiate(transitionManager).TransitionToScene(sceneName);
     }
 }

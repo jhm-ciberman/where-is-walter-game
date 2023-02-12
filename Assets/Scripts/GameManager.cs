@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         LevelManager.Instance.SaveAvatarsForLevel(level, this._initialTargetsToFind);
 
         DOVirtual.DelayedCall(4f, () => this.GuiController.ShowGameWon());
-        DOVirtual.DelayedCall(7f, () => SceneManager.LoadScene("TreeMenu"));
+        DOVirtual.DelayedCall(7f, () => LevelManager.Instance.TransitionToScene("TreeMenu"));
     }
 
     private void LooseLevel(GuiController.LooseReason reason, float delay = 0f)

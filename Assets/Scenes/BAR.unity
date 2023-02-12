@@ -692,8 +692,7 @@ MonoBehaviour:
   GlobalAvatarTimeScale: 0.35
   NumberOfTargetsToFind: 2
   NumberOfExtras: 21
-  MaxNumberOfAttempts: 38
-  NextSceneName: MenuArbol
+  MaxNumberOfAttempts: 3
 --- !u!4 &1123030338
 Transform:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class RoomGameManager : MonoBehaviour
         LevelManager.Instance.NotifyLevelCompleted(level);
         this.GuiController.ShowGameWon();
 
-        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("TreeMenu"));
+        DOVirtual.DelayedCall(3f, () => LevelManager.Instance.TransitionToScene("TreeMenu"));
     }
 
     private void LooseLevel(GuiController.LooseReason reason)

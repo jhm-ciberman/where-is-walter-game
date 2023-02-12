@@ -5,12 +5,12 @@ public class MainMenu : MonoBehaviour
 {
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene("TreeMenu");
+        LevelManager.Instance.TransitionToScene("TreeMenu");
     }
 
     public void OnCreditsButtonClicked()
     {
-        SceneManager.LoadScene("Credits");
+        LevelManager.Instance.TransitionToScene("Credits");
     }
 
     public void OnQuitButtonClicked()

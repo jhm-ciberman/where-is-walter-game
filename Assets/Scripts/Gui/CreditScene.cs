@@ -5,6 +5,6 @@ public class CreditScene : MonoBehaviour
 {
     public void OnBackButtonClicked()
     {
-        SceneManager.LoadScene("MainMenu");
+        LevelManager.Instance.TransitionToScene("MainMenu");
     }
 }

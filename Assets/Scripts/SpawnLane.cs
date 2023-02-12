@@ -61,6 +61,7 @@ public class SpawnLane : MonoBehaviour
         return this.Distance * progress;
     }
 
+#if UNITY_EDITOR
     protected void OnDrawGizmos()
     {
         if (this.Start == null || this.End == null)
@@ -90,6 +91,7 @@ public class SpawnLane : MonoBehaviour
         var labelPosition = this.Start.position + (this.End.position - this.Start.position) * 0.5f;
         Handles.Label(labelPosition, name);
     }
+#endif
 
     public int GetSortingLayerID()
     {
