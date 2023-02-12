@@ -60,7 +60,7 @@ public class RoomGameManager : MonoBehaviour
         LevelManager.Instance.NotifyLevelCompleted(level);
         this.GuiController.ShowGameWon();
 
-        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("MenuArbol"));
+        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("TreeMenu"));
     }
 
     private void LooseLevel()
@@ -68,7 +68,7 @@ public class RoomGameManager : MonoBehaviour
         this._isPlaying = false;
         this.GuiController.ShowGameOver();
 
-        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("MenuArbol"));
+        DOVirtual.DelayedCall(3f, () => SceneManager.LoadScene("TreeMenu"));
     }
 
     public void Propfound(RoomProp prop)

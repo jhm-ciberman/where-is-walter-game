@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
 
     public int MaxNumberOfAttempts = 3;
 
-    public string NextSceneName = "MenuArbol";
-
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
     private readonly List<AvatarAppearance> _initialTargetsToFind = new List<AvatarAppearance>();
@@ -200,7 +198,7 @@ public class GameManager : MonoBehaviour
         LevelManager.Instance.SaveAvatarsForLevel(level, this._initialTargetsToFind);
 
         DOVirtual.DelayedCall(4f, () => this.GuiController.ShowGameWon());
-        DOVirtual.DelayedCall(7f, () => SceneManager.LoadScene(this.NextSceneName));
+        DOVirtual.DelayedCall(7f, () => SceneManager.LoadScene("TreeMenu"));
     }
 
     private void LooseLevel(float delay = 0f)
@@ -212,6 +210,6 @@ public class GameManager : MonoBehaviour
         this._gameState = GameState.GameOver;
 
         DOVirtual.DelayedCall(delay + 1f, () => this.GuiController.ShowGameOver());
-        DOVirtual.DelayedCall(delay + 4f, () => SceneManager.LoadScene(this.NextSceneName));
+        DOVirtual.DelayedCall(delay + 4f, () => SceneManager.LoadScene("TreeMenu"));
     }
 }

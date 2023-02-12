@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DISCO.unity
     guid: fd22ba30bde9ef94e9c4d26f7e29a6f0
   - enabled: 1
-    path: Assets/Scenes/MenuArbol.unity
+    path: Assets/Scenes/TreeMenu.unity
     guid: 7179a2a1c54ab7c4a94a344d83a61caf
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a109612022c666f4c91c710b46a955de
   m_configObjects: {}

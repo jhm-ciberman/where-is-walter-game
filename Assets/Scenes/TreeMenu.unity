@@ -346,6 +346,7 @@ MonoBehaviour:
   DialogBoxController: {fileID: 861834065}
   BackgroundOverlayObject: {fileID: 456923778}
   TreeUIObject: {fileID: 200211119}
+  ConfettiObject: {fileID: 1754966431}
 --- !u!4 &46486812
 Transform:
   m_ObjectHideFlags: 0

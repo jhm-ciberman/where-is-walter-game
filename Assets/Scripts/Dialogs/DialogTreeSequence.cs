@@ -82,7 +82,8 @@ public class DialogTreeSequence : MonoBehaviour
         [GameLevel.Bar] = new [] {
             "Ok, this is serious, we just have to find my great-grandparents. We're so close!",
             "[ShowTreeUI]",
-            "I never got to meet them, but my parents always told me how much they liked going to bars",
+            "I never got to meet them, but...",
+            "...my parents always told me how much they liked going to bars",
             "Last effort, we can do it!",
         },
         [GameLevel.Ending] = new [] {
