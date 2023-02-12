@@ -14,8 +14,6 @@ public class GuiLevelSelectionButton : MonoBehaviour
 
     public GuiAvatar Avatar;
 
-    public Button Button;
-
     public Color LockedColor = new Color(1f, 1f, 1f, 0.7f);
 
     public Color UnlockedColor = new Color(1f, 1f, 1f, 1f);
@@ -38,7 +36,6 @@ public class GuiLevelSelectionButton : MonoBehaviour
 
     private void SetUnlocked(bool isUnlocked)
     {
-        this.Button.interactable = isUnlocked;
         this.Avatar.SetColor(isUnlocked ? this.UnlockedColor : this.LockedColor);
     }
 }

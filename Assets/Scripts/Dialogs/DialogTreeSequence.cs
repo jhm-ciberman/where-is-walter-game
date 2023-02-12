@@ -1,53 +1,11 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+
 public class DialogTreeSequence : MonoBehaviour
 {
     public DialogBoxController DialogBoxController;
-
-    /*
-    private readonly Dictionary<GameLevel, string[]> _messages = new Dictionary<GameLevel, string[]>()
-    {
-        [GameLevel.Cuarto] = new [] {
-            "¿Hola? ¿Hay alguien ahí?",
-            "Al fin! Pensé que SE HABÍAN OLVIDADO DE MÍ.",
-            "estoy buscando información sobre mi familia... pero no encuentro nada!",
-            "no puedo irme hasta completar mi tarea. ¿puedes ayudarme?",
-            "¡Se que tienes demasiada flojera como para hacer servicio a la comunidad!",
-            "tarde! ya estás aquí, además ¿tienes algo más importante que hacer?",
-            "¡Tal como pensaba! empecemos.",
-            "[ShowTreeUI]",
-            "Por cierto, aún no nos hemos presentado. Soy walter, ¡mucho gusto!",
-            "Este es mi árbol genealógico!",
-            "Como puedes ver hay muchos familiares por descubrir.",
-            "Antes de empezar nuestro viaje, necesito algunos ítems.",
-            "[ShowOverlay]",
-            "¡Creo que tengo todo en mi cuarto! Elige el recuadro para empezar.",
-        },
-        [GameLevel.Disco] = new [] {
-            "¡Eso fue mejor de lo que esperaba! nunca dudé en tus habilidades!",
-            "...bueno, tal vez un poco jeje",
-            "[ShowTreeUI]",
-            "Ahora tenemos que encontrar a mis padres.",
-            "Estoy seguro que se fueron de fiesta.",
-        },
-        [GameLevel.BigBen] = new [] {
-            "¡Oh wow! En serio podemos lograrlo, pensé que iba a ser imposible.",
-            "[ShowTreeUI]",
-            "Es hora de encontrar a mis abuelos, oh yes!",
-        },
-        [GameLevel.Bar] = new [] {
-            "Ok, esto va en serio, sólo nos queda encontrar a mis bisabuelos. Estamos muy cerca!",
-            "[ShowTreeUI]",
-            "No pude conocerlos, pero mis padres siempre me cuentan lo mucho que les gustaba ir a bares",
-            "Último esfuerzo, nosotros podemos!",
-        },
-        [GameLevel.Ending] = new [] {
-            "[ShowConfetti]",
-            "¡Yay! Gracias a ti pude recuperar mi árbol genealógico. ¡Eres lo más!",
-        },
-    };
-    */
 
     private readonly Dictionary<GameLevel, string[]> _messages = new Dictionary<GameLevel, string[]>()
     {
@@ -87,13 +45,13 @@ public class DialogTreeSequence : MonoBehaviour
         },
         [GameLevel.Ending] = new [] {
             "[ShowTreeUI]",
-            "Wow! You found all the relatives!",
+            "Wow! You found all my relatives!",
             "[ShowConfetti]",
             "Yay! Thanks to you I was able to recover my family tree. You're the best!",
             "Thanks for playing!",
             "Without you this game wouldn't be possible.",
             "This mini game was created for the 2021 Global Game Jam.",
-            "[ResetProgress]",
+            "[ShowCredits]",
         },
     };
 
@@ -137,19 +95,22 @@ public class DialogTreeSequence : MonoBehaviour
             case "[ShowTreeUI]": this.ShowTreeUICommand(); break;
             case "[ShowOverlay]": this.ShowOverlayCommand(); break;
             case "[ShowConfetti]": this.ShowConfettiCommand(); break;
-            case "[ResetProgress]": this.ResetProgressCommand(); break;
+            case "[ShowCredits]": this.ShowCreditsCommand(); break;
         }
     }
 
-    private void ResetProgressCommand()
+    private void ShowCreditsCommand()
     {
         LevelManager.Instance.ResetProgress();
-        this.DialogBoxController.NextMessage();
+        LevelManager.Instance.TransitionToScene("Credits");
     }
 
     private void ShowConfettiCommand()
     {
+        this.ConfettiObject.transform.localScale = Vector3.zero;
         this.ConfettiObject.SetActive(true);
+        this.ConfettiObject.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+
         this.DialogBoxController.NextMessage();
     }
 

@@ -69,8 +69,6 @@ public class SpawnLane : MonoBehaviour
             return;
         }
 
-        //this.PingPongPreviewAvatar();
-
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(this.Start.position, 0.3f);
         Gizmos.color = Color.red;

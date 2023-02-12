@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
         this.GuiController.gameObject.SetActive(true);
         this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts);
         this.GuiController.SetRemainingTime(this.RemainingTime);
+
+        Camera.main.backgroundColor = Color.black;  // Just in case the background is visible
     }
 
     public void Update()

@@ -42,6 +42,15 @@ public class LevelManager
                 this.SetLevelStatus(level, LevelStatus.Unplayed);
             }
         }
+
+
+#if !UNITY_EDITOR
+        // Debug code to unlock all levels
+        this.SetLevelStatus(GameLevel.Cuarto, LevelStatus.Played);
+        this.SetLevelStatus(GameLevel.Disco, LevelStatus.Played);
+        this.SetLevelStatus(GameLevel.BigBen, LevelStatus.Played);
+        this.SetLevelStatus(GameLevel.Bar, LevelStatus.Played);
+#endif
     }
 
     private void SetLevelStatus(GameLevel level, LevelStatus status)
@@ -107,6 +116,8 @@ public class LevelManager
     public void LoadNextLevel()
     {
         GameLevel nextLevel = this.GetNextLevelToPlay();
+
+        Debug.Log($"Next level to play: {nextLevel}");
 
         if (nextLevel == GameLevel.Undefined)
         {
