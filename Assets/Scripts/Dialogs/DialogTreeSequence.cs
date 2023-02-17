@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Hellmade.Sound;
 using UnityEngine;
 
 public class DialogTreeSequence : MonoBehaviour
@@ -61,6 +62,8 @@ public class DialogTreeSequence : MonoBehaviour
 
     public GameObject ConfettiObject;
 
+    public AudioClip MusicClip;
+
     public void Start()
     {
         this.TreeUIObject.SetActive(false);
@@ -85,6 +88,8 @@ public class DialogTreeSequence : MonoBehaviour
 
         this.DialogBoxController.AddMessages(messages);
         this.DialogBoxController.NextMessage();
+
+        EazySoundManager.PlayMusic(this.MusicClip, 1.0f, true, false);
     }
 
     private void OnMessageChanged()

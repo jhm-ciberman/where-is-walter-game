@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Hellmade.Sound;
 
 public class RoomGameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class RoomGameManager : MonoBehaviour
     public float TotalTime = 60f;
     public int Attempts = 4;
 
+    public AudioClip MusicClip;
+
     public void Start()
     {
         Instance = this;
@@ -29,6 +32,8 @@ public class RoomGameManager : MonoBehaviour
 
         this.GuiController.gameObject.SetActive(true);
         this.GuiController.SetRemainingAttempts(this.Attempts);
+
+        EazySoundManager.PlayMusic(this.MusicClip, 1.0f, true, false);
     }
 
     public void Update()

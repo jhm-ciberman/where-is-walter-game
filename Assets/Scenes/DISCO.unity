@@ -604,7 +604,7 @@ MonoBehaviour:
   NumberOfTargetsToFind: 2
   NumberOfExtras: 20
   MaxNumberOfAttempts: 3
-  NextSceneName: MenuArbol
+  MusicClip: {fileID: 8300000, guid: 9ac3bac508a6cb040b00aa283197bb6b, type: 3}
 --- !u!4 &754714086
 Transform:
   m_ObjectHideFlags: 0
@@ -838,8 +838,9 @@ MonoBehaviour:
   MicroWiggleDelta: {x: 0.6, y: 0.2}
   MicroWiggleSpeed: {x: 0.9, y: 0.7}
   BackgroundBounds: {fileID: 1051586292}
-  FocusDuration: 0.5
+  FocusTransitionDuration: 0.5
   DefaultFocusSize: 3
+  ExtraPadding: 0.2
 --- !u!1 &1599936368
 GameObject:
   m_ObjectHideFlags: 0

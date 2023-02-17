@@ -911,7 +911,7 @@ MonoBehaviour:
   NumberOfTargetsToFind: 2
   NumberOfExtras: 19
   MaxNumberOfAttempts: 3
-  NextSceneName: MenuArbol
+  MusicClip: {fileID: 8300000, guid: 8b57f27abb783b24d9d1ab289fecde6c, type: 3}
 --- !u!4 &1713521994
 Transform:
   m_ObjectHideFlags: 0

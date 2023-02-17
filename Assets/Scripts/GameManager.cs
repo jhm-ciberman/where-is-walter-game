@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Hellmade.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     public int NumberOfExtras = 2;
 
     public int MaxNumberOfAttempts = 3;
+
+    public AudioClip MusicClip;
 
     private readonly List<AvatarAppearance> _targetsToFind = new List<AvatarAppearance>();
 
@@ -93,6 +96,8 @@ public class GameManager : MonoBehaviour
         this.GuiController.SetRemainingTime(this.RemainingTime);
 
         Camera.main.backgroundColor = Color.black;  // Just in case the background is visible
+
+        EazySoundManager.PlayMusic(this.MusicClip, 1.0f, true, false);
     }
 
     public void Update()

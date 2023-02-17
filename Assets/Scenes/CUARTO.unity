@@ -178,6 +178,7 @@ MonoBehaviour:
   GuiController: {fileID: 910601576}
   TotalTime: 60
   Attempts: 2
+  MusicClip: {fileID: 8300000, guid: 1a84953c12c004d4a9b39b0cb21807e1, type: 3}
 --- !u!4 &118137078
 Transform:
   m_ObjectHideFlags: 0

@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44722a59e3c664a46a6fcf8914ea868f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicClip: {fileID: 8300000, guid: 4cc1b5321777ccf488a2ab3ab2d93267, type: 3}
 --- !u!1 &244120528
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +840,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -50.691254, w: -0.8088989}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1132,7 +1133,7 @@ GameObject:
   - component: {fileID: 838956744}
   - component: {fileID: 838956743}
   m_Layer: 5
-  m_Name: ButtonStart
+  m_Name: ButtonBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1156,8 +1157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -748, y: 465}
-  m_SizeDelta: {x: 301.5975, y: 86.0357}
+  m_AnchoredPosition: {x: -729.61, y: 472}
+  m_SizeDelta: {x: 531.218, y: 127.9309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838956743
 MonoBehaviour:
@@ -1180,9 +1181,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 0.97647065, g: 0.43921572, b: 0.44705886, a: 1}
+    m_PressedColor: {r: 0.6431373, g: 0.45098042, b: 0.95294124, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1228,14 +1229,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f90978abd0b5d0c4f965556ec9806ffc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
