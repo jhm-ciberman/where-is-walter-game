@@ -217,6 +217,6 @@ public class GameManager : MonoBehaviour
         this._gameState = GameState.GameOver;
 
         DOVirtual.DelayedCall(delay + 1f, () => this.GuiController.ShowGameOver(reason));
-        DOVirtual.DelayedCall(delay + 4f, () => LevelManager.Instance.RestartLevel());
+        DOVirtual.DelayedCall(delay + 8f, () => LevelManager.Instance.RestartLevel()); // Enough time to play the music
     }
 }

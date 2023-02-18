@@ -108,6 +108,7 @@ public class DialogTreeSequence : MonoBehaviour
     {
         LevelManager.Instance.ResetProgress();
         LevelManager.Instance.TransitionToScene("Credits");
+        this.DialogBoxController.gameObject.SetActive(false);
     }
 
     private void ShowConfettiCommand()

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using Hellmade.Sound;
 
 public class DialogBoxController : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class DialogBoxController : MonoBehaviour
     public GameObject DialogBoxObject;
     public GameObject ContinueArrowObject;
 
+    public AudioClip[] DialogLineSounds;  // Randomly selected from this array
+
+    private int _soundId = 0;
+
     public void Start()
     {
         this.TextBoxText.text = "";
@@ -43,6 +48,8 @@ public class DialogBoxController : MonoBehaviour
 
     public void NextMessage()
     {
+        this.StopDialogLineSound();
+
         int index = this.CurrentMessageIndex + 1;
         if (index >= this._messages.Count)
         {
@@ -59,6 +66,7 @@ public class DialogBoxController : MonoBehaviour
         this.CurrentMessage = message;
         this._isPlayingMessage = true;
         this.UpdateText();
+        this.PlayDialogLineSound();
         this.MessageStarted?.Invoke();
     }
 
@@ -66,6 +74,7 @@ public class DialogBoxController : MonoBehaviour
     {
         this.CurrentCharacterIndex = this.CurrentMessage.Length;
         this.UpdateText();
+        this.StopDialogLineSound();
     }
 
     private void UpdateText()
@@ -115,5 +124,21 @@ public class DialogBoxController : MonoBehaviour
                 this.NextMessage();
             }
         }
+    }
+
+    private void PlayDialogLineSound()
+    {
+        if (this.DialogLineSounds.Length == 0)
+        {
+            return;
+        }
+
+        int index = Random.Range(0, this.DialogLineSounds.Length);
+        this._soundId = EazySoundManager.PlaySound(this.DialogLineSounds[index]);
+    }
+
+    private void StopDialogLineSound()
+    {
+        EazySoundManager.GetAudio(this._soundId)?.Stop();
     }
 }

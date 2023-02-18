@@ -2791,6 +2791,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2023948897}
     m_Modifications:
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d99c6b3cbc9f8454e87b3de2e6f2603b, type: 3}
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b5ec5074cb54d5043b658258a553f766, type: 3}
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a0bd0d6691cbdb4d9c6bacfab7040ec, type: 3}
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 62e7110ff0d5fb24c809f3e1ca1d4f73, type: 3}
+    - target: {fileID: 1709257050035219497, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
+      propertyPath: DialogLineSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: ab299a9bf58e4e746ba6d62a2297888e, type: 3}
     - target: {fileID: 1709257050035219509, guid: 06c84e80af2d8e04c88129a8d3b910db, type: 3}
       propertyPath: m_Name
       value: DialogBox

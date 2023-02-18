@@ -195,6 +195,7 @@ MonoBehaviour:
   Panel2: {fileID: 1132344449521162785}
   TransitionTime: 1
   NextScene: MainMenu
+  TransitionSound: {fileID: 8300000, guid: 37d7e8fbeb87a724ba2779e889d8ea65, type: 3}
 --- !u!1 &1132344451026961835
 GameObject:
   m_ObjectHideFlags: 0

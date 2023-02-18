@@ -1,4 +1,5 @@
 using System;
+using Hellmade.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,8 @@ public class TransitionManager : MonoBehaviour
 
     public string NextScene;
 
+    public AudioClip TransitionSound;
+
     public void Start()
     {
         if (TransitionManager.Instance != null)
@@ -37,6 +40,8 @@ public class TransitionManager : MonoBehaviour
 
         this.Panel1.enabled = true;
         this.Panel2.enabled = true;
+
+        EazySoundManager.PlayMusic(this.TransitionSound, 0.5f, false, persist: true);
     }
 
     private void SetCutoff(Image image, float cutoff)

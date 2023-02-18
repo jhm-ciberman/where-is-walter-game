@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Hellmade.Sound;
 
 public class GuiController : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class GuiController : MonoBehaviour
     public TextMeshProUGUI AttemptsText;
 
     public RectTransform StatsPanel;
+
+    public AudioClip CorrectAnswerSound;
+
+    public AudioClip LooseSound;
 
     public GuiThumbnailComponent[] TargetsThumbnails;
 
@@ -36,6 +41,8 @@ public class GuiController : MonoBehaviour
 
     public void ShowGameOver(LooseReason reason)
     {
+        EazySoundManager.StopAllMusic();
+        EazySoundManager.PlayMusic(this.LooseSound);
         switch (reason)
         {
             case LooseReason.OutOfAttempts:
@@ -97,6 +104,8 @@ public class GuiController : MonoBehaviour
                 thumbnail.MarkAsFound();
             }
         }
+
+        EazySoundManager.PlaySound(this.CorrectAnswerSound, volume: 2.0f);
     }
 
     public void MarkTargetObjectAsFound(RectTransform targetObject)
@@ -108,6 +117,8 @@ public class GuiController : MonoBehaviour
                 thumbnail.MarkAsFound();
             }
         }
+
+        EazySoundManager.PlaySound(this.CorrectAnswerSound, volume: 2.0f);
     }
 
     public void SetTargetAvatars(IEnumerable<AvatarAppearance> targets)

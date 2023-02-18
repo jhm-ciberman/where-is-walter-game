@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Hellmade.Sound;
 using UnityEngine;
 
 public class AvatarMovementController : MonoBehaviour
@@ -44,6 +45,8 @@ public class AvatarMovementController : MonoBehaviour
     public float RocketAcceleration = 100f;
 
     public GameObject ExplosionParticlePrefab;
+
+    public AudioClip ExplosionSound;
 
     private float _flipCountdown = 0f;
 
@@ -237,5 +240,7 @@ public class AvatarMovementController : MonoBehaviour
 
         var pos = this.transform.localPosition;
         this.transform.localPosition = pos + Vector3.forward * 0.1f; // move forward a bit so its hidden behind the explode particle
+
+        EazySoundManager.PlaySound(this.ExplosionSound, volume: 0.8f);
     }
 }
