@@ -6,7 +6,7 @@ A fun and colorful hidden object game made during Global Game Jam 2023.
 
 ## 🚀 Download and Play
 
-Download the game from itch.io: https://ciberman.itch.io/where-is-walter
+Download the game (Windows) or play it online (HTML5) from itch.io: https://ciberman.itch.io/where-is-walter
 
 ## 🎮 Game Description
 
