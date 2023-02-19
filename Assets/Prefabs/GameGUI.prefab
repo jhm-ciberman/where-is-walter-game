@@ -1469,6 +1469,7 @@ MonoBehaviour:
   AttemptsText: {fileID: 3192671806728531096}
   StatsPanel: {fileID: 4929565711755064328}
   CorrectAnswerSound: {fileID: 8300000, guid: 8f7c15253a890a045aca62c313ef639d, type: 3}
+  WrongAnswerSound: {fileID: 8300000, guid: 9e854d3e2ead5db4f99022c053a105b8, type: 3}
   LooseSound: {fileID: 8300000, guid: a7f5724ddfc303b47b6ce5c3e66889b5, type: 3}
   TargetsThumbnails:
   - {fileID: 8649986888728990865}

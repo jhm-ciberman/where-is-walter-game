@@ -51,7 +51,10 @@ public class RoomGameManager : MonoBehaviour
             this.LooseLevel(GuiController.LooseReason.OutOfTime);
         }
 
-        this.GuiController.SetRemainingTime(this._remainingTime);
+        if (this._isPlaying)
+        {
+            this.GuiController.SetRemainingTime(this._remainingTime);
+        }
 
     }
 
@@ -94,12 +97,12 @@ public class RoomGameManager : MonoBehaviour
             this._phoneFound = true;
             prop.Found();
         }
-        else
+        else if (this.Attempts > 0)
         {
             prop.Explode();
             this.Attempts--;
-            this.GuiController.SetRemainingTime(this._remainingTime);
             this.GuiController.SetRemainingAttempts(this.Attempts);
+            this.GuiController.WrongAnswer();
 
             if (this.Attempts == 0)
             {

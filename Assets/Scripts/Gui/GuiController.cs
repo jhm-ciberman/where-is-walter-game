@@ -22,6 +22,8 @@ public class GuiController : MonoBehaviour
 
     public AudioClip CorrectAnswerSound;
 
+    public AudioClip WrongAnswerSound;
+
     public AudioClip LooseSound;
 
     public GuiThumbnailComponent[] TargetsThumbnails;
@@ -54,6 +56,11 @@ public class GuiController : MonoBehaviour
             default:
                 throw new System.Exception("Unknown reason");
         }
+    }
+
+    public void WrongAnswer()
+    {
+        EazySoundManager.PlaySound(this.WrongAnswerSound, volume: 0.5f);
     }
 
     private void ShowOutOfTime()

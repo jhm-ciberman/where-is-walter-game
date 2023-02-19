@@ -48,6 +48,8 @@ public class AvatarMovementController : MonoBehaviour
 
     public AudioClip ExplosionSound;
 
+    public AudioClip RocketSound;
+
     private float _flipCountdown = 0f;
 
     private System.Random _random;
@@ -218,6 +220,8 @@ public class AvatarMovementController : MonoBehaviour
 
         this.AppearanceController.SetHighlight(false);
         this.AppearanceController.SetSortingOrder(1000);
+
+        DOVirtual.DelayedCall(0.2f, () => EazySoundManager.PlaySound(this.RocketSound, volume: 0.8f));
     }
 
     public void StartWalking()

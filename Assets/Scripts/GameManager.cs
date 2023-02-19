@@ -186,6 +186,8 @@ public class GameManager : MonoBehaviour
         DOVirtual.DelayedCall(2f, () => this.ReturnToPlayFromCutscene());
 
         this.GuiController.SetRemainingAttempts(this.MaxNumberOfAttempts - this._attempts);
+        this.GuiController.WrongAnswer();
+
         if (this._attempts >= this.MaxNumberOfAttempts)
         {
             this.LooseLevel(GuiController.LooseReason.OutOfAttempts, 2f);

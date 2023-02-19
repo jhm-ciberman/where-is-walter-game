@@ -51,7 +51,7 @@ public class DialogTreeSequence : MonoBehaviour
             "Yay! Thanks to you I was able to recover my family tree. You're the best!",
             "Thanks for playing!",
             "Without you this game wouldn't be possible.",
-            "This mini game was created for the 2021 Global Game Jam.",
+            "This mini game was created for the 2023  Global Game Jam.",
             "[ShowCredits]",
         },
     };

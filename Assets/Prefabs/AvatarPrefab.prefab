@@ -415,6 +415,7 @@ MonoBehaviour:
   RocketAcceleration: 45
   ExplosionParticlePrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 4af358fdbd8336c4799ea258c54455e4, type: 3}
+  RocketSound: {fileID: 8300000, guid: cbedaabb506c6384b921474954a530b1, type: 3}
 --- !u!58 &-5056956419835487850
 CircleCollider2D:
   m_ObjectHideFlags: 0

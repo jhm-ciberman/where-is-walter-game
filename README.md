@@ -45,7 +45,7 @@ Join the search for Walter's family and download the game now!
 - Florencia Malvina
 
 **Music**
-- Pedro
+- Pedro Puertas
 
 **Programming**
 - [Javier "Ciberman" Mora](https://ciberman.net)
